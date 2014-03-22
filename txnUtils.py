@@ -11,11 +11,14 @@ import keyUtils
 # Makes a transaction from the inputs
 # outputs is a list of [redemptionSatoshis, outputScript]
 def makeRawTransaction(outputTransactionHash, sourceIndex, scriptSig, outputs):
+    
     def makeOutput(data):
         redemptionSatoshis, outputScript = data
         return (struct.pack("<Q", redemptionSatoshis).encode('hex') +
         '%02x' % len(outputScript.decode('hex')) + outputScript)
+    
     formattedOutputs = ''.join(map(makeOutput, outputs))
+    
     return (
         "01000000" + # 4 bytes version
         "01" + # varint for number of inputs

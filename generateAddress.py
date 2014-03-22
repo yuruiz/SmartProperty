@@ -3,22 +3,15 @@ import time, datetime
 
 KEY_GENERATION_LOG_FILE = "keyGenerationLog.txt"
 
-privKey = privateKey.getStrongRandomKey(256)
+#privKey = privateKey.getStrongRandomKey(256)
 #privKey = "0C28FCA386C7A227600B2FE50B7CAE11EC86D3BF1FBE471BE89827E19D72AA1D"
-#privKey = "f19c523315891e6e15ae0608a35eec2e00ebd6d1984cf167f46336dabd9b2de4"
+privKey = "f19c523315891e6e15ae0608a35eec2e00ebd6d1984cf167f46336dabd9b2de4"
 #privKey = "52BB9A981288DF29D47E8020093C64CD9539876130F5492D24D303152A6FEA2A"
 #privKey = "EF7BADE09BA08731A2AEC3BDA0FBCD06A235C497D32C9FB99A589700540BCA4B"
+#privKey = "c9b74446725c99d429848f8093a347976784d133efec971343be004d5f9c7fdc"
+
 mainAddressWIF = privateKey.getWIFPrivateKey(privKey, "main")
 testAddressWIF = privateKey.getWIFPrivateKey(privKey, "test")
-
-
-pubKeyWithPrefix = publicKey.getECDAPublicKeyWithPrefix("\04", privKey)
-
-print pubKeyWithPrefix
-
-RIPEMD160SHA256Hash = publicKey.get160BitPublicKeyHash(pubKeyWithPrefix)
-
-print RIPEMD160SHA256Hash
 
 mainPubKeyPublicAddress = publicKey.getPublicAddress(privKey, "main_pubkey")
 mainScriptPublicAddress = publicKey.getPublicAddress(privKey, "main_script")

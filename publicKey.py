@@ -30,7 +30,7 @@ def get160BitPublicKeyHash(publicKeyWithPrefix):
     SHA256_PublicKeyWithPrefix = SHA256.new(publicKeyWithPrefix.decode("hex"))
     RIPEMD160_SHA256PublicKeyWithPrefix = RIPEMD160.new(SHA256_PublicKeyWithPrefix.digest())
     RIPEMD160SHA256Hash = RIPEMD160_SHA256PublicKeyWithPrefix.hexdigest()
-
+    #print RIPEMD160SHA256Hash
     return RIPEMD160SHA256Hash
 
 def getAddress(RIPEMD160SHA256Hash, addressType):
