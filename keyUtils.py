@@ -47,6 +47,7 @@ def pubKeyToAddr(s):
 def addrHashToScriptPubKey(b58str):
     assert(len(b58str) == 34)
     # 76     A9      14 (20 bytes)                                 88             AC
+    # 76a914 is OP_DUP OP_HASH160 PUSH_20BYTES and 88ac is OP_EQUALVERIFY OP_CHECKSIG.
     return '76a914' + utils.base58CheckDecode(b58str).encode('hex') + '88ac'
 
     
