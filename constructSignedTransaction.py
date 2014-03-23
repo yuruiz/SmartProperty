@@ -185,16 +185,19 @@ transactionToBeSigned = (version + "\n" +
                          scriptSig + "\n" +
                          transactionSequence + "\n" +
                          newTransactionOutputCountHex + "\n" +
-                         satoshisToRedeem +  "\n" +
-                         scriptPubKeyLength + "\n" +
-                         scriptPubKey + "\n" +
+                         satoshisToRedeem_1 + "\n" +
+                         scriptPubKeyLength_1 + "\n" +
+                         scriptPubKey_1 + "\n" +
+                         satoshisToRedeem_2 + "\n" +
+                         scriptPubKeyLength_2 + "\n" +
+                         scriptPubKey_2 + "\n" +
                          blockLockTime +  "\n" +
                          "01000000" # hash code
                          )
+
 '''
 
-
-#print transactionToBeSigned
+print transactionToBeSigned
 
 oneSHA256_TransactionToBeSigned = SHA256.new(transactionToBeSigned.decode("hex")).hexdigest()
 twoSHA256_TransactionToBeSigned = SHA256.new(oneSHA256_TransactionToBeSigned.decode("hex")).digest()
