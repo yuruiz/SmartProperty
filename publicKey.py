@@ -43,6 +43,7 @@ def getAddress(RIPEMD160SHA256Hash, addressType):
         addressCheckSum = twoSHA256MainAddress[0:CHECKSUM_LENGTH]
         
         addressWithChecksum = "".join((address, addressCheckSum))
+        #print "addr w/ checksum: " + addressWithChecksum
         addressPublicKey = utils.base58encode(utils.base256decode(addressWithChecksum.decode("hex")))
         
         #leading zero to account for adding the 1 prefix to the bitcoin address

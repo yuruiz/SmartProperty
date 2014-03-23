@@ -17,8 +17,22 @@ def makeRawTransaction(outputTransactionHash, sourceIndex, scriptSig, outputs):
         return (struct.pack("<Q", redemptionSatoshis).encode('hex') +
         '%02x' % len(outputScript.decode('hex')) + outputScript)
     
-    formattedOutputs = ''.join(map(makeOutput, outputs))
+    formattedOutputs = "".join(map(makeOutput, outputs))
+    #print formattedOutputs
+    '''
+    rawTransaction = ("01000000" + 
+                      "01" + # varint for number of inputs
+                      outputTransactionHash.decode('hex')[::-1].encode('hex') + # reverse outputTransactionHash
+                      struct.pack('<L', sourceIndex).encode('hex') +
+                      '%02x' % len(scriptSig.decode('hex')) + scriptSig +
+                      "ffffffff" + # sequence
+                      "%02x" % len(outputs) + # number of outputs
+                      formattedOutputs + 
+                      "00000000" # lockTime
+                      )
     
+    print rawTransaction
+    '''
     return (
         "01000000" + # 4 bytes version
         "01" + # varint for number of inputs
@@ -27,7 +41,7 @@ def makeRawTransaction(outputTransactionHash, sourceIndex, scriptSig, outputs):
         '%02x' % len(scriptSig.decode('hex')) + scriptSig +
         "ffffffff" + # sequence
         "%02x" % len(outputs) + # number of outputs
-        formattedOutputs +
+        formattedOutputs + 
         "00000000" # lockTime
         )
 
@@ -58,10 +72,16 @@ def verifyTxnSignature(txn):
     parsed = parseTxn(txn)      
     signableTxn = getSignableTxn(parsed)
     hashToSign = hashlib.sha256(hashlib.sha256(signableTxn.decode('hex')).digest()).digest().encode('hex')
+    #print parsed
+    #print parsed[1][-2:]
     assert(parsed[1][-2:] == '01') # hashtype
     sig = keyUtils.derSigToHexSig(parsed[1][:-2])
     public_key = parsed[2]
     vk = ecdsa.VerifyingKey.from_string(public_key[2:].decode('hex'), curve=ecdsa.SECP256k1)
+    
+    #print sig
+    #print hashToSign
+                           
     assert(vk.verify_digest(sig.decode('hex'), hashToSign.decode('hex')))
 
 def makeSignedTransaction(privateKey, outputTransactionHash, sourceIndex, scriptPubKey, outputs):
@@ -144,18 +164,22 @@ class TestTxnUtils(unittest.TestCase):
         # Transaction from
         # https://blockchain.info/tx/901a53e7a3ca96ed0b733c0233aad15f11b0c9e436294aa30c367bf06c3b7be8
         # From 133t to 1KKKK
+        #print "------START verifying makeSignedTransaction...."
         privateKey = keyUtils.wifToPrivateKey("5Kb6aGpijtrb8X28GzmWtbcGZCG8jHQWFJcWugqo3MwKRvC8zyu") #133t
-
+        
+        #print privateKey
+        
         signed_txn = makeSignedTransaction(privateKey,
             "c39e394d41e6be2ea58c2d3a78b8c644db34aeff865215c633fe6937933078a9", # output (prev) transaction hash
             0, # sourceIndex
             keyUtils.addrHashToScriptPubKey("133txdxQmwECTmXqAr9RWNHnzQ175jGb7e"),
             [[24321, #satoshis
             keyUtils.addrHashToScriptPubKey("1KKKK6N21XKo48zWKuQKXdvSsCf95ibHFa")],
-             [20000,            keyUtils.addrHashToScriptPubKey("15nhZbXnLMknZACbb3Jrf1wPCD9DWAcqd7")]]
+             [20000, keyUtils.addrHashToScriptPubKey("15nhZbXnLMknZACbb3Jrf1wPCD9DWAcqd7")]]
             )
-
+        
         verifyTxnSignature(signed_txn)
-
+        #print "------END verifying makeSignedTransaction...."
+        #print "testsigned: " + signed_txn
 if __name__ == '__main__':
     unittest.main()
