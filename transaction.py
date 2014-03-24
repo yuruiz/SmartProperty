@@ -314,38 +314,3 @@ print stxn
 
 
 
-
-
-
-
-'''    
-    outputs = [
-                [satoshis_1, createScriptPublicKey("1KKKK6N21XKo48zWKuQKXdvSsCf95ibHFa")],
-                [satoshis_2, createScriptPublicKey("15nhZbXnLMknZACbb3Jrf1wPCD9DWAcqd7")]
-               ]
-
-    outputs = [[satoshis_1, scriptPubKey_1],[20000, createScriptPublicKey("15nhZbXnLMknZACbb3Jrf1wPCD9DWAcqd7")]]
-
-    signedTransaction = txnUtils.makeRawTransaction(previousTransactionHash, 
-                                                previousTransactionOutputIndex, 
-                                                scriptSig, 
-                                                outputs) #newTransactionOutput)
-    txnUtils.verifyTxnSignature(signedTransaction)
-    print signedTransaction
-
-
-
-
-
-
-buildSignedTransaction(newTransactionInput, newTransactionOutput)
-'''
-
-
-
-
-
-
-
-
-

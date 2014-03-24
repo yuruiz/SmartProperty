@@ -8,9 +8,11 @@ import msgUtils
 sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 #sock.connect(("50.151.108.133", 8333))
 #sock.connect(("64.237.43.178", 8333))
-sock.connect(("24.255.210.44", 8333))
+#sock.connect(("24.255.210.44", 8333))
+sock.connect(("46.105.173.28", 18333))
+#sock.send(msgUtils.getVersionMsg())
 
-sock.send(msgUtils.getVersionMsg())
+print msgUtils.getVersionMsg().encode("hex")
 
 want = 0
 buf = ''
