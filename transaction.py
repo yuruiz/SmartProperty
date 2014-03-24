@@ -20,12 +20,12 @@ CHECKSUM_LENGTH = CHECKSUM_BYTE_LENGTH * 2
 privKey = generateAddress.privKey
 #privKey = privateKey.getWIFPrivateKey(privKey, "main")
 #privKey = keyUtils.wifToPrivateKey("5Kb6aGpijtrb8X28GzmWtbcGZCG8jHQWFJcWugqo3MwKRvC8zyu")
-print privKey 
+#print privKey 
 
 
-previousTransactionOutputPublicAddress = "133txdxQmwECTmXqAr9RWNHnzQ175jGb7e"
-destinationPubAddress_1 = "1KKKK6N21XKo48zWKuQKXdvSsCf95ibHFa"
-destinationPubAddress_2 = "15nhZbXnLMknZACbb3Jrf1wPCD9DWAcqd7"
+previousTransactionOutputPublicAddress = "n2SQWnkE8iSauDnTYd3i3NtrTBngT4DboX"
+destinationPubAddress_1 = "mjiu4Jwr48SzMhEvT6aaiNwPekPksXNRmf"
+destinationPubAddress_2 = "mtBRkCj8GSc5kPYqhLdS4ahaTMXfk5trq1"
 #print pubAddress.encode("hex")
 #print utils.base58CheckDecode("1KKKK6N21XKo48zWKuQKXdvSsCf95ibHFa").encode('hex')
 
@@ -78,10 +78,10 @@ def createScriptPublicKey(publicAddress):
 
 
 # Finds the Reverse Order of previousTransactionHash
-#previousTransactionHash = "202ccf2aaae811e81a6392477210900582c8369a14ba9b72582b78b27edf62df"
+previousTransactionHash = "202ccf2aaae811e81a6392477210900582c8369a14ba9b72582b78b27edf62df"
 #previousTransactionHash = "81b4c832d70cb56ff957589752eb4125a4cab78a25a8fc52d6a09e5bd4404d48"
 #previousTransactionHash = "eccf7e3034189b851985d871f91384b8ee357cd47c3024736e5676eb2debb3f2"
-previousTransactionHash = "c39e394d41e6be2ea58c2d3a78b8c644db34aeff865215c633fe6937933078a9"
+#previousTransactionHash = "c39e394d41e6be2ea58c2d3a78b8c644db34aeff865215c633fe6937933078a9"
 #reversePreviousTransactionHash = previousTransactionHash.decode('hex')[::-1].encode('hex')
 
 #print previousOutputTransactionHash
@@ -109,18 +109,18 @@ previousTransactionOutputIndex = 0
 
 
 
-newTransactionOutputCount = 2
-newTransactionOutputCountHex = "%02x" % newTransactionOutputCount
+#newTransactionOutputCount = 2
+#newTransactionOutputCountHex = "%02x" % newTransactionOutputCount
 #print newTransactionOutputCountHex
 
 # BTC Denomination <=> Satoshis: 100,000,000 -> 1 BTC
 #     - 0.40 BTC
 #satoshis = 99900000
 #satoshis = 40000000
-satoshis_1 = 24321
-satoshisToRedeem_1 = struct.pack("<Q", satoshis_1).encode('hex')
-satoshis_2 = 20000
-satoshisToRedeem_2 = struct.pack("<Q", satoshis_2).encode('hex')
+satoshis_1 = 100000000
+#satoshisToRedeem_1 = struct.pack("<Q", satoshis_1).encode('hex')
+satoshis_2 = 20000000
+#satoshisToRedeem_2 = struct.pack("<Q", satoshis_2).encode('hex')
 
 scriptPubKey_1 = createScriptPublicKey(destinationPubAddress_1)
 scriptPubKey_2 = createScriptPublicKey(destinationPubAddress_2)
@@ -157,8 +157,8 @@ newTransactionInputCount = "%02x" % len(newTransactionInput)
 newTransactionOutput = [
                         [satoshis_1,
                          destinationPubAddress_1],
-                        [satoshis_2,
-                         destinationPubAddress_2],
+                        #[satoshis_2,
+                        # destinationPubAddress_2],
                         ]
 
 # This can support multiple transaction inputs but signing multiple inputs is not yet supported
@@ -226,13 +226,13 @@ def buildRawTransaction(transactionInputList, transactionOutputList):
 def buildSignedTransaction(privateKey, transactionInputList, transactionOutputList):
     
     rawTransaction = buildRawTransaction(newTransactionInput, newTransactionOutput)
-    
+    #print len(rawTransaction)
     def buildScriptSig(rawTransaction):
         singleSHA256_RawTransaction = SHA256.new(rawTransaction.decode("hex")).hexdigest()
         doubleSHA256_RawTransaction = SHA256.new(singleSHA256_RawTransaction.decode("hex")).digest()
         
         #double hash:5dafd07e944f532ed3c09e5f06f0da4e1aaa5b3490441c47fe5ced27d1b33c1b
-        print "double hash raw txn:" + doubleSHA256_RawTransaction.encode("hex")
+        #print "double hash raw txn:" + doubleSHA256_RawTransaction.encode("hex")
         
         sk =  ecdsa.SigningKey.from_string(privateKey.decode('hex'), curve=ecdsa.SECP256k1)
         sig = sk.sign_digest(doubleSHA256_RawTransaction, sigencode=ecdsa.util.sigencode_der) + '\01' # 01 is hashtype
@@ -301,11 +301,6 @@ def buildSignedTransaction(privateKey, transactionInputList, transactionOutputLi
 
 
 
-stxn = buildSignedTransaction(privKey, newTransactionInput, newTransactionOutput)
-
-txnUtils.verifyTxnSignature(stxn)
-    
-print stxn
 
 
 

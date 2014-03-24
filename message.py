@@ -30,6 +30,8 @@ def buildMessage(networkType, command, payload):
     
     message = struct.pack('<L12sL4s', networkType, command, len(payload), payloadChecksum) + payload
     
+    #print payload
+    #print len(payload)
     return message
 
 def buildVersionMessage(networkType, portNumber):
@@ -39,7 +41,7 @@ def buildVersionMessage(networkType, portNumber):
     def formatVersionNetworkAddress(timestamp, service, ipAddressV4, portNumber):
         ipAddressV4ByteString = ("".join([ ("%02x" % int(octet)) for octet in ipAddressV4.split(".") ])).decode("hex")
         #ipAddressV4ByteString = "".join([ chr(int(octet)) for octet in ipAddressV4.split(".") ])
-        print ipAddressV4ByteString
+        #print ipAddressV4ByteString
         
         
         networkAddress = []
@@ -57,7 +59,7 @@ def buildVersionMessage(networkType, portNumber):
         return (formattedNetworkAddress)
   
     # Version: Identifies protocol version being used by the node
-    protocolVersion = 70001
+    protocolVersion = 60002
     #print protocolVersion.encode("hex")
     # Service: 1 - NODE_NETWORK
     service = 1
@@ -68,7 +70,7 @@ def buildVersionMessage(networkType, portNumber):
     nonce = random.getrandbits(64)
     userAgent = utils.varstr("")
     startHeight = 0 
-    relay = True
+    #relay = True
     
     versionMessagePayload = []
     versionMessagePayload.append(struct.pack("<LQQ", 
@@ -81,7 +83,7 @@ def buildVersionMessage(networkType, portNumber):
     versionMessagePayload.append(struct.pack("<Q",nonce))
     versionMessagePayload.append(struct.pack("<s",userAgent))
     versionMessagePayload.append(struct.pack("<L",startHeight))
-    versionMessagePayload.append(struct.pack("<?",relay))
+    #versionMessagePayload.append(struct.pack("<?",relay))
     
     formattedVersionMessagePayload = "".join(versionMessagePayload)    
     
@@ -93,7 +95,17 @@ def buildVersionMessage(networkType, portNumber):
     '''
     return buildMessage(networkType, "version", formattedVersionMessagePayload)
 
+def buildInventoryMessage(networkType, inventory):
+    invHashes = []
+    for item in inventory:
+        invHashes.append(struct.pack("<L", item[0]) + 
+            hashlib.sha256(hashlib.sha256(item[1]).digest()).digest()[::-1])
+    return buildMessage(networkType, "inv", utils.varint(len(invHashes)) + "".join(invHashes))
+
 def buildTransactionMessage(networkType, transactionPayload):
+    transactionPayload = transactionPayload.decode("hex")
     transactionMessage = buildMessage(networkType, "tx", transactionPayload)
+    
+    #print transactionMessage
     
     return transactionMessage

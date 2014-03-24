@@ -5,7 +5,9 @@ import socket
 
 import message
 import msgUtils
+import generateAddress
 import transaction
+import txnUtils
 
 # Main Network Magic Value
 MAIN_NETWORK_MAGIC = 0xD9B4BEF9
@@ -29,15 +31,48 @@ TEST_NETWORK_PORT = 18333
 #        - testnet-seed.bluematt.me
 #MAINNET_PEER_HOST_IP = 
 TESTNET3_PEER_HOST_IP = "46.105.173.28"
+TESTNET3_PEER_HOST_IP = "24.247.20.162"
+
+sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+sock.settimeout(10)
+sock.connect((TESTNET3_PEER_HOST_IP, TEST_NETWORK_PORT))
+
 
 versionMessage = message.buildVersionMessage(TEST_NETWORK3_MAGIC, TEST_NETWORK_PORT)
 
-sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-sock.settimeout(5)
-sock.connect((TESTNET3_PEER_HOST_IP, TEST_NETWORK_PORT))
+stxn = transaction.buildSignedTransaction(generateAddress.privKey, 
+                                          transaction.newTransactionInput, 
+                                          transaction.newTransactionOutput)
 
-sock.send(message.buildTransactionMessage(TEST_NETWORK3_MAGIC,transaction.stxn))
+txnUtils.verifyTxnSignature(stxn)
+#print len(versionMessage)
+#print len(stxn.decode("hex"))
+
+
+
+transactionMessage = message.buildTransactionMessage(TEST_NETWORK3_MAGIC,stxn)
+
+
+#sock.send(transactionMessage)
+
+#print (''.join( [ "%02X " % ord( x ) for x in versionMessage ] ).strip())
+
+#sock.send(transactionMessage)
 sock.send(versionMessage)
 
 sock.recv(1000)
 sock.recv(1000)
+
+#print (''.join( [ "%02X " % ord( x ) for x in transactionMessage ] ).strip())
+
+'''
+sock.send(message.buildInventoryMessage(TEST_NETWORK3_MAGIC, [(1,stxn.decode("hex"))]))
+
+sock.recv(1000)
+'''
+sock.send(transactionMessage[4:])
+
+#sock.recv(1000)
+'''
+sock.close()
+'''
