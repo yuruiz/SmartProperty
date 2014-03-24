@@ -65,12 +65,12 @@ sock.recv(1000)
 
 #print (''.join( [ "%02X " % ord( x ) for x in transactionMessage ] ).strip())
 
-'''
+
 sock.send(message.buildInventoryMessage(TEST_NETWORK3_MAGIC, [(1,stxn.decode("hex"))]))
 
 sock.recv(1000)
-'''
-sock.send(transactionMessage[4:])
+
+sock.send(transactionMessage)
 
 #sock.recv(1000)
 '''

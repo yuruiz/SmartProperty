@@ -59,7 +59,7 @@ def buildVersionMessage(networkType, portNumber):
         return (formattedNetworkAddress)
   
     # Version: Identifies protocol version being used by the node
-    protocolVersion = 60002
+    protocolVersion = 70001
     #print protocolVersion.encode("hex")
     # Service: 1 - NODE_NETWORK
     service = 1
@@ -70,7 +70,7 @@ def buildVersionMessage(networkType, portNumber):
     nonce = random.getrandbits(64)
     userAgent = utils.varstr("")
     startHeight = 0 
-    #relay = True
+    relay = True
     
     versionMessagePayload = []
     versionMessagePayload.append(struct.pack("<LQQ", 
@@ -83,7 +83,7 @@ def buildVersionMessage(networkType, portNumber):
     versionMessagePayload.append(struct.pack("<Q",nonce))
     versionMessagePayload.append(struct.pack("<s",userAgent))
     versionMessagePayload.append(struct.pack("<L",startHeight))
-    #versionMessagePayload.append(struct.pack("<?",relay))
+    versionMessagePayload.append(struct.pack("<?",relay))
     
     formattedVersionMessagePayload = "".join(versionMessagePayload)    
     
