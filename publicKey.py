@@ -1,9 +1,9 @@
-import utils, sys
+import utils, sys, hashlib
 
 from ecdsa import SigningKey, SECP256k1
 
 from Crypto.Hash import SHA256
-from Crypto.Hash import RIPEMD160
+#from Crypto.Hash import RIPEMD160
 
 #Bitcoin Network Address Prefix
 # PUBKEY - Normal Transactions
@@ -28,8 +28,12 @@ def getECDAPublicKeyWithPrefix(prefix, privateKey):
 
 def get160BitPublicKeyHash(publicKeyWithPrefix):
     SHA256_PublicKeyWithPrefix = SHA256.new(publicKeyWithPrefix.decode("hex"))
-    RIPEMD160_SHA256PublicKeyWithPrefix = RIPEMD160.new(SHA256_PublicKeyWithPrefix.digest())
-    RIPEMD160SHA256Hash = RIPEMD160_SHA256PublicKeyWithPrefix.hexdigest()
+    
+    RIPEMD160 = hashlib.new('ripemd160')
+    RIPEMD160.update(SHA256_PublicKeyWithPrefix.digest())
+    
+    
+    RIPEMD160SHA256Hash = RIPEMD160.hexdigest()
     #print RIPEMD160SHA256Hash
     return RIPEMD160SHA256Hash
 

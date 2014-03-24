@@ -31,7 +31,7 @@ TEST_NETWORK_PORT = 18333
 #        - testnet-seed.bluematt.me
 #MAINNET_PEER_HOST_IP = 
 TESTNET3_PEER_HOST_IP = "46.105.173.28"
-TESTNET3_PEER_HOST_IP = "24.247.20.162"
+#TESTNET3_PEER_HOST_IP = "24.247.20.162"
 
 sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 sock.settimeout(10)
