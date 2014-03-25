@@ -1,17 +1,15 @@
 import ecdsa
-import hashlib
 import struct
-import unittest
+
 
 import utils
-import keyUtils
 import publicKey
-import privateKey
+
 
 from Crypto.Hash import SHA256
 import generateAddress
 import opCodeDefinitions
-import txnUtils
+
 
 #Four-Byte Checksum Length
 CHECKSUM_BYTE_LENGTH = 4
@@ -56,7 +54,7 @@ def get160BitHashFromPublicAddress(publicAddress):
     # PUBKEY - Normal Transactions (0x00)
     # SCRIPT - MULTI_SIG Transactions (0x05)
     # TESTNET - Test Network (0x6F)
-    version = addressWithLeadingZeros[0]
+    #version = addressWithLeadingZeros[0]
     
     return publicAddress160BitHash
 

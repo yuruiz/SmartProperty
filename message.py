@@ -1,9 +1,7 @@
 import hashlib
-import random
 import struct
 import time
-import socket
-import unittest
+
 
 from Crypto.Hash import SHA256
 from Crypto.Random import random

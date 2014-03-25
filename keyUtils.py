@@ -1,13 +1,7 @@
 # https://pypi.python.org/pypi/ecdsa/0.10
-import ecdsa
 import ecdsa.der
-import ecdsa.util
 import hashlib
 import unittest
-import random
-import re
-import struct
-
 import utils
 
 # https://en.bitcoin.it/wiki/Wallet_import_format
