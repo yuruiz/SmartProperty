@@ -1,13 +1,13 @@
 bitcoins
 ========
 
-
 3rd Party Python Packages Required:
 - Pycrypto 2.6 - https://www.dlitz.net/software/pycrypto/ 
 	- WIN: http://www..voidspace.org.uk/python/modules.shtml#pycrypto
 	- OTHER: See official site
 - ECDSA - https://pypi.python.org/pypi/ecdsa
 
+Note: If you are not using Eclipse as IDE, then you can ignore the two project files, using Eclipse will greatly simplify stuff though.
 
 2014-03-24 (bitcoin_v1):
 
