@@ -3,10 +3,10 @@ bitcoins
 
 
 3rd Party Python Packages Required:
-1) Pycrypto 2.6 - https://www.dlitz.net/software/pycrypto/ 
+- Pycrypto 2.6 - https://www.dlitz.net/software/pycrypto/ 
 	WIN: https://www.dlitz.net/software/pycrypto/
 	OTHER: See official site
-2) ECDSA - https://pypi.python.org/pypi/ecdsa
+- ECDSA - https://pypi.python.org/pypi/ecdsa
 
 
 2014-03-24 (bitcoin_v1):
