@@ -14,7 +14,7 @@ bitcoins
 Rewrote most of the code forked from the version created by Ken Shirriff over at: 
 http://www.righto.com/2014/02/bitcoins-hard-way-using-raw-bitcoin.html
 
-This is still issue when trying to broadcast transaction via TESTNET3, have not yet tried the MAIN NET yet.
+There is still an issue when trying to broadcast transaction via TESTNET3, have not yet tried the MAIN NET yet.
 
 - Run by executing transmission.py
 - All the transaction details can be found inside the transaction.py file
