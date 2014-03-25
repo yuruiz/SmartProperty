@@ -11,7 +11,7 @@ bitcoins
 
 2014-03-24 (bitcoin_v1):
 
-Rewrote 85% of the code forked from the version created by Ken Shirriff over at: 
+Rewrote most of the code forked from the version created by Ken Shirriff over at: 
 http://www.righto.com/2014/02/bitcoins-hard-way-using-raw-bitcoin.html
 
 This is still issue when trying to broadcast transaction via TESTNET3, have not yet tried the MAIN NET yet.
