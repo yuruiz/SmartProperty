@@ -4,7 +4,7 @@ bitcoins
 
 3rd Party Python Packages Required:
 - Pycrypto 2.6 - https://www.dlitz.net/software/pycrypto/ 
-	- WIN: https://www.dlitz.net/software/pycrypto/
+	- WIN: http://www..voidspace.org.uk/python/modules.shtml#pycrypto
 	- OTHER: See official site
 - ECDSA - https://pypi.python.org/pypi/ecdsa
 
