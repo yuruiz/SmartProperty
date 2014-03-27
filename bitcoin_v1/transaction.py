@@ -51,16 +51,6 @@ def createScriptPublicKey(publicAddress):
     
     return buildScript
 
-
-scriptPubKey_1 = createScriptPublicKey(configuration.DESTINATION_PUBLIC_ADDRESS_1)
-#scriptPubKey_2 = createScriptPublicKey(configuration.DESTINATION_PUBLIC_ADDRESS_2)
-
-scriptPubKeyLength_1 = '%02x' % len(scriptPubKey_1.decode('hex'))
-#scriptPubKeyLength_2 = '%02x' % len(scriptPubKey_2.decode('hex'))
-
-
-
-
 # This can support multiple transaction inputs but signing multiple inputs is not yet supported
 def buildRawTransaction(transactionInputList, transactionOutputList):
 
@@ -126,13 +116,10 @@ def buildRawTransaction(transactionInputList, transactionOutputList):
 def buildSignedTransaction(privateKey, transactionInputList, transactionOutputList):
     
     rawTransaction = buildRawTransaction(configuration.NEW_TRANSACTION_INPUT, configuration.NEW_TRANSACTION_OUTPUT)
-    #print len(rawTransaction)
+    
     def buildScriptSig(rawTransaction):
         singleSHA256_RawTransaction = SHA256.new(rawTransaction.decode("hex")).hexdigest()
         doubleSHA256_RawTransaction = SHA256.new(singleSHA256_RawTransaction.decode("hex")).digest()
-        
-        #double hash:5dafd07e944f532ed3c09e5f06f0da4e1aaa5b3490441c47fe5ced27d1b33c1b
-        #print "double hash raw txn:" + doubleSHA256_RawTransaction.encode("hex")
         
         sk =  ecdsa.SigningKey.from_string(privateKey.decode('hex'), curve=ecdsa.SECP256k1)
         sig = sk.sign_digest(doubleSHA256_RawTransaction, sigencode=ecdsa.util.sigencode_der) + '\01' # 01 is hashtype
