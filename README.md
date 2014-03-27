@@ -9,7 +9,20 @@ bitcoins
 
 Note: If you are not using Eclipse as IDE, then you can ignore the two project files, using Eclipse will greatly simplify stuff though.
 
+
+2014-03-25 (bitcoin_v1):
+========================
+
+Added configurations file to make parameter changes easier.
+
+Successfully performed test against TESTNET3 by broadcasting the following transactions:
+- https://www.biteasy.com/testnet/transactions/56ae1f0b9133765424925e19a54604f6745c75465c542c439ac9c861031539de
+- https://www.biteasy.com/testnet/transactions/09b91ce9638a7a6dcd93a102a7f5dd0a21d947cb0d5d7e246d146fecef0615ff
+- https://www.biteasy.com/testnet/transactions/1f3e58541e81946a142a809816a174b420ecc336531ba4d95ff3f8618328710f
+
+
 2014-03-24 (bitcoin_v1):
+========================
 
 Rewrote most of the code forked from the version created by Ken Shirriff over at: 
 http://www.righto.com/2014/02/bitcoins-hard-way-using-raw-bitcoin.html
