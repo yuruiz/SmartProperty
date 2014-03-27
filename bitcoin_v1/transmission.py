@@ -1,74 +1,41 @@
 import socket
-
 import message
-import generateAddress
 import transaction
 import txnUtils
+import configuration
 
-# Main Network Magic Value
-MAIN_NETWORK_MAGIC = 0xD9B4BEF9
+print configuration.NETWORK_ADDRESS
 
-# TestNet3 Magic Value
-TEST_NETWORK3_MAGIC = 0x0709110B
+versionMessage = message.buildVersionMessage(configuration.NETWORK_MAGIC, configuration.NETWORK_PORT)
 
-# Main Network Port Number
-MAIN_NETWORK_PORT = 8333
+# Builds signed transaction with specified private key and transaction input and outputs 
+stxn = transaction.buildSignedTransaction(configuration.PRIVATE_KEY, 
+                                          configuration.NEW_TRANSACTION_INPUT, 
+                                          configuration.NEW_TRANSACTION_OUTPUT)
 
-# Test Network Port Number
-TEST_NETWORK_PORT = 18333
+# Verifies the signed transaction, any error here will abort the socket creation
+txnUtils.verifyTxnSignature(stxn)
 
-# Peer Host IP, do nslookup of domains below to find IP
-#    - MAINNET SEEDS: 
-#        - bitseed.xf2.org
-#        - dnsseed.bluematt.me
-#        - dnsseed.bitcoin.dashjr.org
-#    - TESTNET3 SEEDS: 
-#        - testnet-seed.bitcoin.petertodd.org
-#        - testnet-seed.bluematt.me
-#MAINNET_PEER_HOST_IP = 
-TESTNET3_PEER_HOST_IP = "46.105.173.28"
-#TESTNET3_PEER_HOST_IP = "24.247.20.162"
+# Construct the transaction message to be sent from the transaction message
+transactionMessage = message.buildTransactionMessage(configuration.NETWORK_MAGIC,stxn)
 
+# Builds the socket connection with the specified IP address and port number
 sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 sock.settimeout(10)
-sock.connect((TESTNET3_PEER_HOST_IP, TEST_NETWORK_PORT))
+sock.connect((configuration.NETWORK_ADDRESS, configuration.NETWORK_PORT))
 
-
-versionMessage = message.buildVersionMessage(TEST_NETWORK3_MAGIC, TEST_NETWORK_PORT)
-
-stxn = transaction.buildSignedTransaction(generateAddress.privKey, 
-                                          transaction.newTransactionInput, 
-                                          transaction.newTransactionOutput)
-
-txnUtils.verifyTxnSignature(stxn)
-#print len(versionMessage)
-#print len(stxn.decode("hex"))
-
-
-
-transactionMessage = message.buildTransactionMessage(TEST_NETWORK3_MAGIC,stxn)
-
-
-#sock.send(transactionMessage)
-
-#print (''.join( [ "%02X " % ord( x ) for x in versionMessage ] ).strip())
-
-#sock.send(transactionMessage)
+# Initialize the transaction transmission with server starting with the version message
 sock.send(versionMessage)
 
+# The server will reply with two messages corresponding to the sent version message
+#    - 1st Message: Server's Version
+#    - 2nd Message: Server's Version Acknowledgement
 sock.recv(1000)
 sock.recv(1000)
 
-#print (''.join( [ "%02X " % ord( x ) for x in transactionMessage ] ).strip())
-
-
-sock.send(message.buildInventoryMessage(TEST_NETWORK3_MAGIC, [(1,stxn.decode("hex"))]))
-
+# Prepares the server to receive the Transaction Message
+sock.send(message.buildInventoryMessage(configuration.NETWORK_MAGIC, [(1,stxn.decode("hex"))]))
 sock.recv(1000)
 
+# Sends the actual transaction message
 sock.send(transactionMessage)
-
-#sock.recv(1000)
-'''
-sock.close()
-'''

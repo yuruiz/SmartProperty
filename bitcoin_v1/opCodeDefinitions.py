@@ -1,4 +1,3 @@
-
 OP_DUP = 0x76
 OP_HASH160 = 0xa9
 PUSH_DATA14 = 0x14

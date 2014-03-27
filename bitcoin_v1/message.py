@@ -23,13 +23,8 @@ def buildMessage(networkType, command, payload):
     doubleSHA256_Payload = SHA256.new(singleSHA256_Payload).digest()
     payloadChecksum = doubleSHA256_Payload[0:4]
     
-    #build
-    
-    
     message = struct.pack('<L12sL4s', networkType, command, len(payload), payloadChecksum) + payload
-    
-    #print payload
-    #print len(payload)
+
     return message
 
 def buildVersionMessage(networkType, portNumber):
@@ -38,10 +33,7 @@ def buildVersionMessage(networkType, portNumber):
     #    does not have the timestamp in the prefix
     def formatVersionNetworkAddress(timestamp, service, ipAddressV4, portNumber):
         ipAddressV4ByteString = ("".join([ ("%02x" % int(octet)) for octet in ipAddressV4.split(".") ])).decode("hex")
-        #ipAddressV4ByteString = "".join([ chr(int(octet)) for octet in ipAddressV4.split(".") ])
-        #print ipAddressV4ByteString
-        
-        
+       
         networkAddress = []
         networkAddress.append(struct.pack("<Q", 
                                           service))
@@ -84,13 +76,7 @@ def buildVersionMessage(networkType, portNumber):
     versionMessagePayload.append(struct.pack("<?",relay))
     
     formattedVersionMessagePayload = "".join(versionMessagePayload)    
-    
-    
-    #print versionMessagePayload
-    '''
-    struct.pack('<LQQ26s26sQsL?', protocolVersion, service, timestamp, addressReceived,
-        addressFrom, nonce, userAgent, startHeight, relay)
-    '''
+
     return buildMessage(networkType, "version", formattedVersionMessagePayload)
 
 def buildInventoryMessage(networkType, inventory):
@@ -103,7 +89,5 @@ def buildInventoryMessage(networkType, inventory):
 def buildTransactionMessage(networkType, transactionPayload):
     transactionPayload = transactionPayload.decode("hex")
     transactionMessage = buildMessage(networkType, "tx", transactionPayload)
-    
-    #print transactionMessage
-    
+     
     return transactionMessage
