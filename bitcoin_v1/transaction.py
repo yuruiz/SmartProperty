@@ -61,7 +61,8 @@ def buildRawTransaction(transactionInputList, transactionOutputList):
         inputSequence = "ffffffff"
         (previousTransactionHash, 
          previousTransactionOutputIndex,
-         previousTransactionOutputPublicAddress
+         previousTransactionOutputPublicAddress,
+         privateKey
          ) = inputParameters
         
         reversePreviousTransactionHash = previousTransactionHash.decode("hex")[::-1].encode("hex")
@@ -113,13 +114,13 @@ def buildRawTransaction(transactionInputList, transactionOutputList):
 
     return transaction
 
-def buildSignedTransaction(privateKey, transactionInputList, transactionOutputList):
+def buildSignedTransaction(privateKeyList, transactionInputList, transactionOutputList):
     
     rawTransaction = buildRawTransaction(configuration.NEW_TRANSACTION_INPUT, configuration.NEW_TRANSACTION_OUTPUT)
-    
-    def buildScriptSig(rawTransaction):
-        singleSHA256_RawTransaction = SHA256.new(rawTransaction.decode("hex")).hexdigest()
-        doubleSHA256_RawTransaction = SHA256.new(singleSHA256_RawTransaction.decode("hex")).digest()
+    singleSHA256_RawTransaction = SHA256.new(rawTransaction.decode("hex")).hexdigest()
+    doubleSHA256_RawTransaction = SHA256.new(singleSHA256_RawTransaction.decode("hex")).digest()
+        
+    def buildScriptSig(privateKey, doubleSHA256_RawTransaction):
         
         sk =  ecdsa.SigningKey.from_string(privateKey.decode('hex'), curve=ecdsa.SECP256k1)
         sig = sk.sign_digest(doubleSHA256_RawTransaction, sigencode=ecdsa.util.sigencode_der) + '\01' # 01 is hashtype
@@ -135,13 +136,14 @@ def buildSignedTransaction(privateKey, transactionInputList, transactionOutputLi
         inputSequence = "ffffffff"
         (previousTransactionHash, 
          previousTransactionOutputIndex,
-         previousTransactionOutputPublicAddress
+         previousTransactionOutputPublicAddress,
+         privateKey
          ) = inputParameters
         
         reversePreviousTransactionHash = previousTransactionHash.decode("hex")[::-1].encode("hex")
         previousTransactionOutputIndexHex = struct.pack('<L', previousTransactionOutputIndex).encode('hex')
-        
-        scriptSig = buildScriptSig(rawTransaction)
+
+        scriptSig = buildScriptSig(privateKey, doubleSHA256_RawTransaction)
         scriptSigLength = "%02x" % len(scriptSig.decode("hex"))
         
         transactionInput = (reversePreviousTransactionHash +
