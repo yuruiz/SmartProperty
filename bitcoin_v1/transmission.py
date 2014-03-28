@@ -21,7 +21,7 @@ transactionMessage = message.buildTransactionMessage(configuration.NETWORK_MAGIC
 
 # Builds the socket connection with the specified IP address and port number
 sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-sock.settimeout(30)
+sock.settimeout(10)
 sock.connect((configuration.NETWORK_ADDRESS, configuration.NETWORK_PORT))
 
 # Initialize the transaction transmission with server starting with the version message
@@ -39,7 +39,3 @@ sock.recv(1000)
 
 # Sends the actual transaction message
 sock.send(transactionMessage)
-sock.recv(1000)
-sock.recv(1000)
-sock.recv(1000)
-sock.recv(1000)

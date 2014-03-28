@@ -150,17 +150,8 @@ def buildRawTransaction(transactionInputList, transactionOutputList):
 
 def buildSignedTransaction(privateKeyList, transactionInputList, transactionOutputList):
         
-    rawTransaction = buildRawTransaction(configuration.NEW_TRANSACTION_INPUT, configuration.NEW_TRANSACTION_OUTPUT)
+    rawTransactionList = buildRawTransaction(configuration.NEW_TRANSACTION_INPUT, configuration.NEW_TRANSACTION_OUTPUT)
 
-    singleSHA256_RawTransaction = []
-    doubleSHA256_RawTransaction = []
-    count = 0
-    for x in rawTransaction:
-        singleSHA256_RawTransaction.append(SHA256.new(x.decode("hex")).hexdigest())
-        doubleSHA256_RawTransaction.append(SHA256.new(singleSHA256_RawTransaction[count].decode("hex")).digest())
-        
-        count+=1
-        
     def buildScriptSig(privateKey, doubleSHA256_RawTransaction):
         
         sk =  ecdsa.SigningKey.from_string(privateKey.decode('hex'), curve=ecdsa.SECP256k1)
@@ -170,7 +161,7 @@ def buildSignedTransaction(privateKeyList, transactionInputList, transactionOutp
     
         return scriptSig
     
-    def buildTransactionInput(inputParameters):
+    def buildTransactionInput(inputParameters, rawTransaction):
                 
         # Sequence is set to UNIT_MAX = "FFFFFFFF" because this will permanently lock this transaction
         #     - Sequence is intended to work with Replacements, but Replacement is currently disabled
@@ -183,7 +174,10 @@ def buildSignedTransaction(privateKeyList, transactionInputList, transactionOutp
         
         reversePreviousTransactionHash = previousTransactionHash.decode("hex")[::-1].encode("hex")
         previousTransactionOutputIndexHex = struct.pack('<L', previousTransactionOutputIndex).encode('hex')
-
+        
+        singleSHA256_RawTransaction = SHA256.new(rawTransaction.decode("hex")).hexdigest()
+        doubleSHA256_RawTransaction = SHA256.new(singleSHA256_RawTransaction.decode("hex")).digest()
+        
         scriptSig = buildScriptSig(privateKey, doubleSHA256_RawTransaction)
         scriptSigLength = "%02x" % len(scriptSig.decode("hex"))
         
@@ -214,7 +208,7 @@ def buildSignedTransaction(privateKeyList, transactionInputList, transactionOutp
     
     hxTransactionVersion = "01000000"
     hxTransactionInputListCount = "%02x" % len(transactionInputList)
-    hxTransactionInputList = "".join(map(buildTransactionInput, transactionInputList))
+    hxTransactionInputList = "".join(map(buildTransactionInput, transactionInputList, rawTransactionList))
     hxTransactionOutputListCount = "%02x" % len(transactionOutputList)
     hxTransactionOutputList = "".join(map(buildTransactionOutput, transactionOutputList))
     hxTransactionBlockLockTime = "00000000"
