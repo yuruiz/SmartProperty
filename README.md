@@ -9,6 +9,13 @@ bitcoins
 
 Note: If you are not using Eclipse as IDE, then you can ignore the two project files, using Eclipse will greatly simplify stuff though.
 
+2014-03-27 (bitcoin_v1):
+========================
+
+Added support for multi-input transactions.
+
+Successfully tested against TESTNET3 with the following transaction:
+https://www.biteasy.com/testnet/transactions/b11c5c3359087f6646b3ea2648bb9f33bfa7f1ea4e255b0ed92caafe23de79a0
 
 2014-03-25 (bitcoin_v1):
 ========================
