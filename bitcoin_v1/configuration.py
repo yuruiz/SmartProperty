@@ -21,7 +21,8 @@ TEST_NETWORK_PORT = 18333
 #        - testnet-seed.bitcoin.petertodd.org
 #        - testnet-seed.bluematt.me
 MAINNET_PEER_HOST_IP = "1.1.1.1"
-#TESTNET3_PEER_HOST_IP = "95.211.121.211"
+TESTNET3_PEER_HOST_IP = "95.211.121.211"
+TESTNET3_PEER_HOST_IP = "198.50.215.81"
 TESTNET3_PEER_HOST_IP = "testnet-seed.bitcoin.petertodd.org"
 
 selectNetwork = "test"
@@ -36,13 +37,12 @@ else:
     NETWORK_ADDRESS = TESTNET3_PEER_HOST_IP
 
 PRIVATE_KEY_LIST = ["c9b74446725c99d429848f8093a347976784d133efec971343be004d5f9c7fdc", 
-                    "c9b74446725c99d429848f8093a347976784d133efec971343be004d5f9c7fdc",
-                    "c9b74446725c99d429848f8093a347976784d133efec971343be004d5f9c7fdc"]
+                    "d3484a00246dee175bfc092b7ed7bb3067ec78083035d9cfd34cec06f40c4cc2"
+                    ]
 
 # The transaction hash of the previous 
 PREVIOUS_TRANSACTION_HASH_LIST = ["415ac093bb4611a2cf2ff34c673afdb20d9b8c18eb355d1ab5d1f22e0da38603", #6.8
-                                  "1df492ae7b95d6b1fe432a2c5ebf0acba8b5c861653bfc2f9ef6663bf239ddcc", #.55
-                                  "94623ec9794b22bb20f86c16585ce0ea24f2f5f63970bc97e631b2096dd6f0bd"] #.1
+                                  "a94b239a16e923df5e4a447062f9c71a9d5cfb765086d593caf41aa01abb2441"] #.6.9
 
 
 # The Previous Output Transaction Index
@@ -50,19 +50,17 @@ PREVIOUS_TRANSACTION_HASH_LIST = ["415ac093bb4611a2cf2ff34c673afdb20d9b8c18eb355
 #       to send money from.
 #     - 0: First, 1: Second, ...
 PREVIOUS_TRANSACTION_OUTPUT_INDEX_LIST = [0,
-                                          0,
-                                          1]
+                                          0
+                                          ]
 
 PREVIOUS_TRANSACTION_OUTPUT_PUBLIC_ADDRESS_LIST = ["n2SQWnkE8iSauDnTYd3i3NtrTBngT4DboX",
-                                                   "n2SQWnkE8iSauDnTYd3i3NtrTBngT4DboX",
-                                                   "n2SQWnkE8iSauDnTYd3i3NtrTBngT4DboX"]
+                                                   "mtBRkCj8GSc5kPYqhLdS4ahaTMXfk5trq1"
+                                                   ]
 
 
 # BTC Denomination <=> Satoshis: 100,000,000 -> 1 BTC
 #     - 0.40 BTC
-DESTINATION_SATOSHIS_LIST = [680000000,
-                             55000000,
-                             10000000]
+DESTINATION_SATOSHIS_LIST = [1270000000]
 
 DESTINATION_PUBLIC_ADDRESS_LIST = ["myqGc9SzpYm3qFU83UNhMZ8mjCFqzmGi2x"]
 
@@ -84,10 +82,6 @@ NEW_TRANSACTION_INPUT = [
                           PREVIOUS_TRANSACTION_OUTPUT_INDEX_LIST[1],
                           PREVIOUS_TRANSACTION_OUTPUT_PUBLIC_ADDRESS_LIST[1],
                           PRIVATE_KEY_LIST[1]],
-                         [PREVIOUS_TRANSACTION_HASH_LIST[2],
-                          PREVIOUS_TRANSACTION_OUTPUT_INDEX_LIST[2],
-                          PREVIOUS_TRANSACTION_OUTPUT_PUBLIC_ADDRESS_LIST[2],
-                          PRIVATE_KEY_LIST[2]],
                          ]
 
 # New Transaction Outputs

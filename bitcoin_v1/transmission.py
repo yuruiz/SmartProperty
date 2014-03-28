@@ -40,3 +40,6 @@ sock.recv(1000)
 # Sends the actual transaction message
 sock.send(transactionMessage)
 sock.recv(1000)
+sock.recv(1000)
+sock.recv(1000)
+sock.recv(1000)
