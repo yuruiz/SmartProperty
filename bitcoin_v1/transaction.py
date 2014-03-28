@@ -52,30 +52,55 @@ def createScriptPublicKey(publicAddress):
     return buildScript
 
 # This can support multiple transaction inputs but signing multiple inputs is not yet supported
-def buildRawTransaction(singleTransactionInput, transactionOutputList):
+def buildRawTransaction(transactionInputList, transactionOutputList):
 
-    def buildTransactionInput(inputParameters):
+    def buildTransactionInput(transactionInputList):
         
         # Sequence is set to UNIT_MAX = "FFFFFFFF" because this will permanently lock this transaction
         #     - Sequence is intended to work with Replacements, but Replacement is currently disabled
         inputSequence = "ffffffff"
-        (previousTransactionHash, 
-         previousTransactionOutputIndex,
-         previousTransactionOutputPublicAddress,
-         privateKey
-         ) = inputParameters
         
-        reversePreviousTransactionHash = previousTransactionHash.decode("hex")[::-1].encode("hex")
-        previousTransactionOutputIndexHex = struct.pack('<L', previousTransactionOutputIndex).encode('hex')
+        inputListLength = len(transactionInputList)
         
-        scriptSig = createScriptPublicKey(previousTransactionOutputPublicAddress)
-        scriptSigLength = "%02x" % len(scriptSig.decode("hex"))
         
-        transactionInput = (reversePreviousTransactionHash +
-                            previousTransactionOutputIndexHex +
-                            scriptSigLength +
-                            scriptSig + 
-                            inputSequence)
+        
+        
+        reversePreviousTransactionHash = []
+        previousTransactionOutputIndexHex = []
+        scriptSig = []
+        scriptSigLength = []
+        
+        count = 0
+        for x in transactionInputList:
+            (previousTransactionHash, 
+             previousTransactionOutputIndex,
+             previousTransactionOutputPublicAddress,
+             privateKey
+             ) = x
+             
+            reversePreviousTransactionHash.append(previousTransactionHash.decode("hex")[::-1].encode("hex"))
+            previousTransactionOutputIndexHex.append(struct.pack('<L', previousTransactionOutputIndex).encode('hex'))
+            scriptSig.append(createScriptPublicKey(previousTransactionOutputPublicAddress))
+            scriptSigLength.append("%02x" % len(scriptSig[count].decode("hex")))
+            
+            count+=1
+        print inputListLength
+        print scriptSig[0]
+        transactionInput = []
+        for x in xrange(0, inputListLength):
+            transactionInput.append("")
+            for y in xrange(0, inputListLength):
+                if x == y:
+                    transactionInput[x] += (reversePreviousTransactionHash[y] +
+                                            previousTransactionOutputIndexHex[y] +
+                                            scriptSigLength[y] +
+                                            scriptSig[y] + 
+                                            inputSequence)
+                else:
+                    transactionInput[x] += (reversePreviousTransactionHash[y] +
+                                            previousTransactionOutputIndexHex[y] +
+                                            "00" + 
+                                            inputSequence)       
         
         return transactionInput
     
@@ -97,25 +122,44 @@ def buildRawTransaction(singleTransactionInput, transactionOutputList):
         return transactionOutput
     
     hxTransactionVersion = "01000000"
-    hxTransactionInputListCount = "%02x" % 2 #len(singleTransactionInput)
-    #hxTransactionInputList = "".join(map(buildTransactionInput, singleTransactionInput))
-    hxTransactionInputList = buildTransactionInput(singleTransactionInput)
+    hxTransactionInputListCount = "%02x" % len(transactionInputList)
+    
+    
+    #hxTransactionInputList = "".join(map(buildTransactionInput, transactionInputList))
+    
+    hxTransactionInputList = buildTransactionInput(transactionInputList)
+    
+    
+    #hxTransactionInputList = buildTransactionInput(singleTransactionInput)
     hxTransactionOutputListCount = "%02x" % len(transactionOutputList)
     hxTransactionOutputList = "".join(map(buildTransactionOutput, transactionOutputList))
     hxTransactionBlockLockTime = "00000000"
     hxTransactionHashCode = "01000000"
 
-    transaction = (hxTransactionVersion +
-                   hxTransactionInputListCount +
-                   hxTransactionInputList + 
-                   hxTransactionOutputListCount +
-                   hxTransactionOutputList +
-                   hxTransactionBlockLockTime +
-                   hxTransactionHashCode)
+    transaction = []
+    for x in hxTransactionInputList:
+        transaction.append(hxTransactionVersion +
+                       hxTransactionInputListCount +
+                       x + 
+                       hxTransactionOutputListCount +
+                       hxTransactionOutputList +
+                       hxTransactionBlockLockTime +
+                       hxTransactionHashCode)
 
     return transaction
 
 def buildSignedTransaction(privateKeyList, transactionInputList, transactionOutputList):
+        
+    rawTransaction = buildRawTransaction(configuration.NEW_TRANSACTION_INPUT, configuration.NEW_TRANSACTION_OUTPUT)
+
+    singleSHA256_RawTransaction = []
+    doubleSHA256_RawTransaction = []
+    count = 0
+    for x in rawTransaction:
+        singleSHA256_RawTransaction.append(SHA256.new(x.decode("hex")).hexdigest())
+        doubleSHA256_RawTransaction.append(SHA256.new(singleSHA256_RawTransaction[count].decode("hex")).digest())
+        
+        count+=1
         
     def buildScriptSig(privateKey, doubleSHA256_RawTransaction):
         
@@ -127,11 +171,7 @@ def buildSignedTransaction(privateKeyList, transactionInputList, transactionOutp
         return scriptSig
     
     def buildTransactionInput(inputParameters):
-        
-        rawTransaction = buildRawTransaction(inputParameters, configuration.NEW_TRANSACTION_OUTPUT)
-        singleSHA256_RawTransaction = SHA256.new(rawTransaction.decode("hex")).hexdigest()
-        doubleSHA256_RawTransaction = SHA256.new(singleSHA256_RawTransaction.decode("hex")).digest()
-        
+                
         # Sequence is set to UNIT_MAX = "FFFFFFFF" because this will permanently lock this transaction
         #     - Sequence is intended to work with Replacements, but Replacement is currently disabled
         inputSequence = "ffffffff"
