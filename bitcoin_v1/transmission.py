@@ -1,7 +1,7 @@
 import socket
 import message
 import transaction
-import txnUtils
+#import txnUtils
 import configuration
 
 print configuration.NETWORK_ADDRESS
@@ -40,3 +40,4 @@ sock.recv(1000)
 
 # Sends the actual transaction message
 sock.send(transactionMessage)
+sock.recv(1000)

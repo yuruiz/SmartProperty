@@ -88,9 +88,9 @@ def buildRawTransaction(transactionInputList, transactionOutputList, hashtype):
         print scriptSig[0]
 
         transactionInput = []
-        if hashtype == '\01':
-            for x in xrange(0, inputListLength):
-                transactionInput.append("")
+        for x in xrange(0, inputListLength):
+            transactionInput.append("")
+            if hashtype[x] == '\01':
                 for y in xrange(0, inputListLength):
                     if x == y:
                         transactionInput[x] += (reversePreviousTransactionHash[y] +
@@ -103,14 +103,12 @@ def buildRawTransaction(transactionInputList, transactionOutputList, hashtype):
                                                 previousTransactionOutputIndexHex[y] +
                                                 "00" +
                                                 inputSequence)
-        else if hashtype = '\80':
-            for x in xrange(0, inputListLength):
-                transactionInput.append("")
-                    transactionInput[x] = (reversePreviousTransactionHash[y] +
-                                            previousTransactionOutputIndexHex[y] +
-                                            scriptSigLength[y] +
-                                            scriptSig[y] +
-                                            inputSequence)
+            elif hashtype[x] == '\80':
+                transactionInput[x] = (reversePreviousTransactionHash[x] +
+                                        previousTransactionOutputIndexHex[x] +
+                                        scriptSigLength[x] +
+                                        scriptSig[x] +
+                                        inputSequence)
         return transactionInput
 
     def buildTransactionOutput(outputParameters):
@@ -132,9 +130,9 @@ def buildRawTransaction(transactionInputList, transactionOutputList, hashtype):
 
     hxTransactionVersion = "01000000"
 
-    if hashtype == '\01':
+    if hashtype[0] == '\01':
         hxTransactionInputListCount = "%02x" % len(transactionInputList)
-    else if hashtype == '\80':
+    elif (hashtype[0] == '\80'):
         hxTransactionInputListCount = "%02x" % 1
 
 
