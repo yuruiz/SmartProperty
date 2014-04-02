@@ -8,10 +8,11 @@ print configuration.NETWORK_ADDRESS
 
 versionMessage = message.buildVersionMessage(configuration.NETWORK_MAGIC, configuration.NETWORK_PORT)
 
-# Builds signed transaction with specified private key and transaction input and outputs 
-stxn = transaction.buildSignedTransaction(configuration.PRIVATE_KEY_LIST, 
-                                          configuration.NEW_TRANSACTION_INPUT, 
-                                          configuration.NEW_TRANSACTION_OUTPUT)
+# Builds signed transaction with specified private key and transaction input and outputs
+stxn = transaction.buildSignedTransaction(configuration.PRIVATE_KEY_LIST,
+                                          configuration.NEW_TRANSACTION_INPUT,
+                                          configuration.NEW_TRANSACTION_OUTPUT,
+                                          configuration.hashtype)
 
 # Verifies the signed transaction, any error here will abort the socket creation
 #txnUtils.verifyTxnSignature(stxn)

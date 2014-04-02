@@ -13,11 +13,11 @@ MAIN_NETWORK_PORT = 8333
 TEST_NETWORK_PORT = 18333
 
 # Peer Host IP, do nslookup of domains below to find IP
-#    - MAINNET SEEDS: 
+#    - MAINNET SEEDS:
 #        - bitseed.xf2.org
 #        - dnsseed.bluematt.me
 #        - dnsseed.bitcoin.dashjr.org
-#    - TESTNET3 SEEDS: 
+#    - TESTNET3 SEEDS:
 #        - testnet-seed.bitcoin.petertodd.org
 #        - testnet-seed.bluematt.me
 MAINNET_PEER_HOST_IP = "1.1.1.1"
@@ -31,16 +31,18 @@ if selectNetwork == "main":
     NETWORK_MAGIC = MAIN_NETWORK_MAGIC
     NETWORK_PORT = MAIN_NETWORK_PORT
     NETWORK_ADDRESS = MAINNET_PEER_HOST_IP
-else: 
+else:
     NETWORK_MAGIC =  TEST_NETWORK3_MAGIC
     NETWORK_PORT = TEST_NETWORK_PORT
     NETWORK_ADDRESS = TESTNET3_PEER_HOST_IP
 
-PRIVATE_KEY_LIST = ["c9b74446725c99d429848f8093a347976784d133efec971343be004d5f9c7fdc", 
+hashtype = '\80'
+
+PRIVATE_KEY_LIST = ["c9b74446725c99d429848f8093a347976784d133efec971343be004d5f9c7fdc",
                     "d3484a00246dee175bfc092b7ed7bb3067ec78083035d9cfd34cec06f40c4cc2"
                     ]
 
-# The transaction hash of the previous 
+# The transaction hash of the previous
 PREVIOUS_TRANSACTION_HASH_LIST = ["415ac093bb4611a2cf2ff34c673afdb20d9b8c18eb355d1ab5d1f22e0da38603", #6.8
                                   "a94b239a16e923df5e4a447062f9c71a9d5cfb765086d593caf41aa01abb2441"] #.6.9
 
