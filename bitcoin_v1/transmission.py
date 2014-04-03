@@ -15,10 +15,10 @@ stxn = transaction.buildSignedTransaction(configuration.PRIVATE_KEY_LIST,
                                           configuration.hashtype)
 
 # Verifies the signed transaction, any error here will abort the socket creation
-#txnUtils.verifyTxnSignature(stxn)
+# txnUtils.verifyTxnSignature(stxn)
 
 # Construct the transaction message to be sent from the transaction message
-transactionMessage = message.buildTransactionMessage(configuration.NETWORK_MAGIC,stxn)
+transactionMessage = message.buildTransactionMessage(configuration.NETWORK_MAGIC, stxn)
 
 # Builds the socket connection with the specified IP address and port number
 sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -35,7 +35,7 @@ sock.recv(1000)
 sock.recv(1000)
 
 # Prepares the server to receive the Transaction Message
-sock.send(message.buildInventoryMessage(configuration.NETWORK_MAGIC, [(1,stxn.decode("hex"))]))
+sock.send(message.buildInventoryMessage(configuration.NETWORK_MAGIC, [(1, stxn.decode("hex"))]))
 sock.recv(1000)
 
 # Sends the actual transaction message

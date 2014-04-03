@@ -8,7 +8,7 @@ import publicKey
 import opCodeDefinitions
 import configuration
 
-#Four-Byte Checksum Length
+# Four-Byte Checksum Length
 CHECKSUM_BYTE_LENGTH = 4
 CHECKSUM_LENGTH = CHECKSUM_BYTE_LENGTH * 2
 
@@ -32,13 +32,15 @@ def get160BitHashFromPublicAddress(publicAddress):
 
     # Checks to make sure the checksum provided matches the calculated checksum
     #    of the 160bit of the public address
-    assert(providedChecksum == calculatedChecksum)
+    assert providedChecksum == calculatedChecksum
 
     return publicAddress160BitHash
 
 # Requires the outgoing public address to create the output script
+
+
 def createScriptPublicKey(publicAddress):
-    assert(len(publicAddress) == 34)
+    assert len(publicAddress) == 34
 
     publicAddress160BitHash = get160BitHashFromPublicAddress(publicAddress)
 
@@ -52,6 +54,8 @@ def createScriptPublicKey(publicAddress):
     return buildScript
 
 # This can support multiple transaction inputs but signing multiple inputs is not yet supported
+
+
 def buildRawTransaction(transactionInputList, transactionOutputList, hashtype):
 
     def buildTransactionInput(transactionInputList, hashtype):
@@ -61,9 +65,6 @@ def buildRawTransaction(transactionInputList, transactionOutputList, hashtype):
         inputSequence = "ffffffff"
 
         inputListLength = len(transactionInputList)
-
-
-
 
         reversePreviousTransactionHash = []
         previousTransactionOutputIndexHex = []
@@ -83,7 +84,7 @@ def buildRawTransaction(transactionInputList, transactionOutputList, hashtype):
             scriptSig.append(createScriptPublicKey(previousTransactionOutputPublicAddress))
             scriptSigLength.append("%02x" % len(scriptSig[count].decode("hex")))
 
-            count+=1
+            count += 1
         # print inputListLength
         # print scriptSig[0]
 
@@ -105,10 +106,10 @@ def buildRawTransaction(transactionInputList, transactionOutputList, hashtype):
                                                 inputSequence)
             elif hashtype[x] == '80'.decode('hex'):
                 transactionInput[x] = (reversePreviousTransactionHash[x] +
-                                        previousTransactionOutputIndexHex[x] +
-                                        scriptSigLength[x] +
-                                        scriptSig[x] +
-                                        inputSequence)
+                                       previousTransactionOutputIndexHex[x] +
+                                       scriptSigLength[x] +
+                                       scriptSig[x] +
+                                       inputSequence)
         return transactionInput
 
     def buildTransactionOutput(outputParameters):
@@ -132,7 +133,7 @@ def buildRawTransaction(transactionInputList, transactionOutputList, hashtype):
 
     hxTransactionInputListCount = []
     # print len(hashtype)
-    for x in xrange(0,len(hashtype)):
+    for x in xrange(0, len(hashtype)):
         if hashtype[x] == '\01':
             hxTransactionInputListCount.append("%02x" % len(transactionInputList))
         elif hashtype[x] == '80'.decode('hex'):
@@ -142,7 +143,6 @@ def buildRawTransaction(transactionInputList, transactionOutputList, hashtype):
     #hxTransactionInputList = "".join(map(buildTransactionInput, transactionInputList))
 
     hxTransactionInputList = buildTransactionInput(transactionInputList, hashtype)
-
 
     #hxTransactionInputList = buildTransactionInput(singleTransactionInput)
     hxTransactionOutputListCount = "%02x" % len(transactionOutputList)
@@ -155,23 +155,26 @@ def buildRawTransaction(transactionInputList, transactionOutputList, hashtype):
     # print len(hxTransactionInputListCount)
     for x in hxTransactionInputList:
         transaction.append(hxTransactionVersion +
-                       hxTransactionInputListCount[transactioncount] +
-                       x +
-                       hxTransactionOutputListCount +
-                       hxTransactionOutputList +
-                       hxTransactionBlockLockTime +
-                       hxTransactionHashCode)
+                           hxTransactionInputListCount[transactioncount] +
+                           x +
+                           hxTransactionOutputListCount +
+                           hxTransactionOutputList +
+                           hxTransactionBlockLockTime +
+                           hxTransactionHashCode)
         transactioncount += 1
     return transaction
 
+
 def buildSignedTransaction(privateKeyList, transactionInputList, transactionOutputList, hashtype):
 
-    rawTransactionList = buildRawTransaction(configuration.NEW_TRANSACTION_INPUT, configuration.NEW_TRANSACTION_OUTPUT, hashtype)
+    rawTransactionList = buildRawTransaction(
+        configuration.NEW_TRANSACTION_INPUT, configuration.NEW_TRANSACTION_OUTPUT, hashtype)
 
     def buildScriptSig(privateKey, doubleSHA256_RawTransaction, hashtype):
 
-        sk =  ecdsa.SigningKey.from_string(privateKey.decode('hex'), curve=ecdsa.SECP256k1)
-        sig = sk.sign_digest(doubleSHA256_RawTransaction, sigencode=ecdsa.util.sigencode_der) + hashtype # 01 is hashtype
+        sk = ecdsa.SigningKey.from_string(privateKey.decode('hex'), curve=ecdsa.SECP256k1)
+        # 01 is hashtype
+        sig = sk.sign_digest(doubleSHA256_RawTransaction, sigencode=ecdsa.util.sigencode_der) + hashtype
         pubKey = publicKey.getECDAPublicKeyWithPrefix(publicKey.BITCOIN_PROTOCOL_PUBLIC_KEY_PREFIX, privateKey)
         scriptSig = utils.varstr(sig).encode('hex') + utils.varstr(pubKey.decode('hex')).encode('hex')
 

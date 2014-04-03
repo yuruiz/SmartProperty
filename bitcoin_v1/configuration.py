@@ -32,18 +32,18 @@ if selectNetwork == "main":
     NETWORK_PORT = MAIN_NETWORK_PORT
     NETWORK_ADDRESS = MAINNET_PEER_HOST_IP
 else:
-    NETWORK_MAGIC =  TEST_NETWORK3_MAGIC
+    NETWORK_MAGIC = TEST_NETWORK3_MAGIC
     NETWORK_PORT = TEST_NETWORK_PORT
     NETWORK_ADDRESS = TESTNET3_PEER_HOST_IP
 
-hashtype = ['80'.decode('hex'),'\01']
+hashtype = ['80'.decode('hex'), '\01']
 
 PRIVATE_KEY_LIST = ["f19c523315891e6e15ae0608a35eec2e00ebd6d1984cf167f46336dabd9b2de4",
                     "c9b74446725c99d429848f8093a347976784d133efec971343be004d5f9c7fdc"]
 
 # The transaction hash of the previous
-PREVIOUS_TRANSACTION_HASH_LIST = ["b11c5c3359087f6646b3ea2648bb9f33bfa7f1ea4e255b0ed92caafe23de79a0", #5
-                                  "e53987879fe0230d77bdb724727fd7a7ac445d63556fd8ccb2b93c89096c07be"] #.81
+PREVIOUS_TRANSACTION_HASH_LIST = ["b11c5c3359087f6646b3ea2648bb9f33bfa7f1ea4e255b0ed92caafe23de79a0",  # 5
+                                  "e53987879fe0230d77bdb724727fd7a7ac445d63556fd8ccb2b93c89096c07be"]  # .81
 
 
 # The Previous Output Transaction Index
@@ -76,15 +76,15 @@ DESTINATION_PUBLIC_ADDRESS_LIST = ["mtBRkCj8GSc5kPYqhLdS4ahaTMXfk5trq1",
 #        - This is the address where you are transferring the Bitcoin from
 #        - You must have the private key to this public address
 NEW_TRANSACTION_INPUT = [
-                         [PREVIOUS_TRANSACTION_HASH_LIST[0],
-                          PREVIOUS_TRANSACTION_OUTPUT_INDEX_LIST[0],
-                          PREVIOUS_TRANSACTION_OUTPUT_PUBLIC_ADDRESS_LIST[0],
-                          PRIVATE_KEY_LIST[0]],
-                         [PREVIOUS_TRANSACTION_HASH_LIST[1],
-                          PREVIOUS_TRANSACTION_OUTPUT_INDEX_LIST[1],
-                          PREVIOUS_TRANSACTION_OUTPUT_PUBLIC_ADDRESS_LIST[1],
-                          PRIVATE_KEY_LIST[1]]
-                         ]
+    [PREVIOUS_TRANSACTION_HASH_LIST[0],
+     PREVIOUS_TRANSACTION_OUTPUT_INDEX_LIST[0],
+     PREVIOUS_TRANSACTION_OUTPUT_PUBLIC_ADDRESS_LIST[0],
+     PRIVATE_KEY_LIST[0]],
+    [PREVIOUS_TRANSACTION_HASH_LIST[1],
+     PREVIOUS_TRANSACTION_OUTPUT_INDEX_LIST[1],
+     PREVIOUS_TRANSACTION_OUTPUT_PUBLIC_ADDRESS_LIST[1],
+     PRIVATE_KEY_LIST[1]]
+]
 
 # New Transaction Outputs
 # List of
@@ -92,8 +92,8 @@ NEW_TRANSACTION_INPUT = [
 #    - New Transaction Output Public Address
 #        - This is the address where you are transferring the Bitcoin to
 NEW_TRANSACTION_OUTPUT = [
-                          [DESTINATION_SATOSHIS_LIST[0],
-                           DESTINATION_PUBLIC_ADDRESS_LIST[0]],
-                          [DESTINATION_SATOSHIS_LIST[1],
-                           DESTINATION_PUBLIC_ADDRESS_LIST[1]],
-                          ]
+    [DESTINATION_SATOSHIS_LIST[0],
+     DESTINATION_PUBLIC_ADDRESS_LIST[0]],
+    [DESTINATION_SATOSHIS_LIST[1],
+     DESTINATION_PUBLIC_ADDRESS_LIST[1]],
+]
