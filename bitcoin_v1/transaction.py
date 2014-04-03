@@ -130,10 +130,13 @@ def buildRawTransaction(transactionInputList, transactionOutputList, hashtype):
 
     hxTransactionVersion = "01000000"
 
-    if hashtype[0] == '\01':
-        hxTransactionInputListCount = "%02x" % len(transactionInputList)
-    elif (hashtype[0] == '\80'):
-        hxTransactionInputListCount = "%02x" % 1
+    hxTransactionInputListCount = []
+
+    for x in xrange(0,len(hashtype)):
+        if hashtype[x] == '\01':
+            hxTransactionInputListCount.append("%02x" % len(transactionInputList))
+        elif (hashtype[x] == '\80'):
+            hxTransactionInputListCount.append("%02x" % 1)
 
 
     #hxTransactionInputList = "".join(map(buildTransactionInput, transactionInputList))
@@ -148,15 +151,16 @@ def buildRawTransaction(transactionInputList, transactionOutputList, hashtype):
     hxTransactionHashCode = "01000000"
 
     transaction = []
+    transactioncount = 0
     for x in hxTransactionInputList:
         transaction.append(hxTransactionVersion +
-                       hxTransactionInputListCount +
+                       hxTransactionInputListCount[transactioncount] +
                        x +
                        hxTransactionOutputListCount +
                        hxTransactionOutputList +
                        hxTransactionBlockLockTime +
                        hxTransactionHashCode)
-
+        transactioncount += 1
     return transaction
 
 def buildSignedTransaction(privateKeyList, transactionInputList, transactionOutputList, hashtype):
