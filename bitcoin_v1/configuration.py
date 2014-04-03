@@ -39,11 +39,11 @@ else:
 hashtype = ['80'.decode('hex'), '\01']
 
 PRIVATE_KEY_LIST = ["f19c523315891e6e15ae0608a35eec2e00ebd6d1984cf167f46336dabd9b2de4",
-                    "c9b74446725c99d429848f8093a347976784d133efec971343be004d5f9c7fdc"]
+                    "d3484a00246dee175bfc092b7ed7bb3067ec78083035d9cfd34cec06f40c4cc2"]
 
 # The transaction hash of the previous
 PREVIOUS_TRANSACTION_HASH_LIST = ["b11c5c3359087f6646b3ea2648bb9f33bfa7f1ea4e255b0ed92caafe23de79a0",  # 5
-                                  "e53987879fe0230d77bdb724727fd7a7ac445d63556fd8ccb2b93c89096c07be"]  # .81
+                                  "1df492ae7b95d6b1fe432a2c5ebf0acba8b5c861653bfc2f9ef6663bf239ddcc"]  # .81
 
 
 # The Previous Output Transaction Index
@@ -54,16 +54,17 @@ PREVIOUS_TRANSACTION_OUTPUT_INDEX_LIST = [0,
                                           1]
 
 PREVIOUS_TRANSACTION_OUTPUT_PUBLIC_ADDRESS_LIST = ["myqGc9SzpYm3qFU83UNhMZ8mjCFqzmGi2x",
-                                                   "n2SQWnkE8iSauDnTYd3i3NtrTBngT4DboX"
+                                                   "mtBRkCj8GSc5kPYqhLdS4ahaTMXfk5trq1",
+                                                   #"n2SQWnkE8iSauDnTYd3i3NtrTBngT4DboX"
                                                    ]
 
 
 # BTC Denomination <=> Satoshis: 100,000,000 -> 1 BTC
 #     - 0.40 BTC
 DESTINATION_SATOSHIS_LIST = [400000000,
-                             81000000]
+                             40000000]
 
-DESTINATION_PUBLIC_ADDRESS_LIST = ["mtBRkCj8GSc5kPYqhLdS4ahaTMXfk5trq1",
+DESTINATION_PUBLIC_ADDRESS_LIST = ["n2SQWnkE8iSauDnTYd3i3NtrTBngT4DboX",
                                    "mjiu4Jwr48SzMhEvT6aaiNwPekPksXNRmf"]
 
 
