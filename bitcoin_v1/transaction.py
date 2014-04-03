@@ -84,8 +84,8 @@ def buildRawTransaction(transactionInputList, transactionOutputList, hashtype):
             scriptSigLength.append("%02x" % len(scriptSig[count].decode("hex")))
 
             count+=1
-        print inputListLength
-        print scriptSig[0]
+        # print inputListLength
+        # print scriptSig[0]
 
         transactionInput = []
         for x in xrange(0, inputListLength):
@@ -131,13 +131,13 @@ def buildRawTransaction(transactionInputList, transactionOutputList, hashtype):
     hxTransactionVersion = "01000000"
 
     hxTransactionInputListCount = []
-
+    # print len(hashtype)
     for x in xrange(0,len(hashtype)):
         if hashtype[x] == '\01':
             hxTransactionInputListCount.append("%02x" % len(transactionInputList))
-        elif (hashtype[x] == '\80'):
+        elif hashtype[x] == '\80':
             hxTransactionInputListCount.append("%02x" % 1)
-
+    # print hxTransactionInputListCount
 
     #hxTransactionInputList = "".join(map(buildTransactionInput, transactionInputList))
 
@@ -152,6 +152,7 @@ def buildRawTransaction(transactionInputList, transactionOutputList, hashtype):
 
     transaction = []
     transactioncount = 0
+    # print len(hxTransactionInputListCount)
     for x in hxTransactionInputList:
         transaction.append(hxTransactionVersion +
                        hxTransactionInputListCount[transactioncount] +
