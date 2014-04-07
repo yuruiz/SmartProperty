@@ -104,7 +104,7 @@ def buildRawTransaction(transactionInputList, transactionOutputList, hashtype):
                                                 previousTransactionOutputIndexHex[y] +
                                                 "00" +
                                                 inputSequence)
-            elif hashtype[x] == '80'.decode('hex'):
+            elif hashtype[x] == '81'.decode('hex'):
                 transactionInput[x] = (reversePreviousTransactionHash[x] +
                                        previousTransactionOutputIndexHex[x] +
                                        scriptSigLength[x] +
@@ -136,7 +136,7 @@ def buildRawTransaction(transactionInputList, transactionOutputList, hashtype):
     for x in xrange(0, len(hashtype)):
         if hashtype[x] == '\01':
             hxTransactionInputListCount.append("%02x" % len(transactionInputList))
-        elif hashtype[x] == '80'.decode('hex'):
+        elif hashtype[x] == '81'.decode('hex'):
             hxTransactionInputListCount.append("%02x" % 1)
     print hxTransactionInputListCount
 
