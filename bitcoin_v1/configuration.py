@@ -36,7 +36,7 @@ else:
     NETWORK_PORT = TEST_NETWORK_PORT
     NETWORK_ADDRESS = TESTNET3_PEER_HOST_IP
 
-hashtype = ['\01'
+hashtype = ['01'
             #'\01',
             ]
 
@@ -56,7 +56,7 @@ PREVIOUS_TRANSACTION_HASH_LIST = ["55fe5f8599add2a1fb91a104d16a67fba91d8f3fc24b9
 #     - 0: First, 1: Second, ...
 PREVIOUS_TRANSACTION_OUTPUT_INDEX_LIST = [0
                                           #0
-                                          
+
                                           ]
 
 PREVIOUS_TRANSACTION_OUTPUT_PUBLIC_ADDRESS_LIST = ["myqGc9SzpYm3qFU83UNhMZ8mjCFqzmGi2x"

@@ -91,7 +91,7 @@ def buildRawTransaction(transactionInputList, transactionOutputList, hashtype):
         transactionInput = []
         for x in xrange(0, inputListLength):
             transactionInput.append("")
-            if hashtype[x] == '\01':
+            if hashtype[x] == '01':
                 for y in xrange(0, inputListLength):
                     if x == y:
                         transactionInput[x] += (reversePreviousTransactionHash[y] +
@@ -104,12 +104,14 @@ def buildRawTransaction(transactionInputList, transactionOutputList, hashtype):
                                                 previousTransactionOutputIndexHex[y] +
                                                 "00" +
                                                 inputSequence)
-            elif hashtype[x] == '81'.decode('hex'):
+            elif hashtype[x] == '81':
                 transactionInput[x] = (reversePreviousTransactionHash[x] +
                                        previousTransactionOutputIndexHex[x] +
                                        scriptSigLength[x] +
                                        scriptSig[x] +
                                        inputSequence)
+
+        # print transactionInput
         return transactionInput
 
     def buildTransactionOutput(outputParameters):
@@ -134,9 +136,9 @@ def buildRawTransaction(transactionInputList, transactionOutputList, hashtype):
     hxTransactionInputListCount = []
     # print len(hashtype)
     for x in xrange(0, len(hashtype)):
-        if hashtype[x] == '\01':
+        if hashtype[x] == '01':
             hxTransactionInputListCount.append("%02x" % len(transactionInputList))
-        elif hashtype[x] == '81'.decode('hex'):
+        elif hashtype[x] == '81':
             hxTransactionInputListCount.append("%02x" % 1)
     print hxTransactionInputListCount
 
@@ -174,7 +176,7 @@ def buildSignedTransaction(privateKeyList, transactionInputList, transactionOutp
 
         sk = ecdsa.SigningKey.from_string(privateKey.decode('hex'), curve=ecdsa.SECP256k1)
         # 01 is hashtype
-        sig = sk.sign_digest(doubleSHA256_RawTransaction, sigencode=ecdsa.util.sigencode_der) + hashtype
+        sig = sk.sign_digest(doubleSHA256_RawTransaction, sigencode=ecdsa.util.sigencode_der) + hashtype.decode('hex')
         pubKey = publicKey.getECDAPublicKeyWithPrefix(publicKey.BITCOIN_PROTOCOL_PUBLIC_KEY_PREFIX, privateKey)
         scriptSig = utils.varstr(sig).encode('hex') + utils.varstr(pubKey.decode('hex')).encode('hex')
 
