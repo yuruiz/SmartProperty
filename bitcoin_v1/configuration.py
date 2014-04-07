@@ -36,12 +36,13 @@ else:
     NETWORK_PORT = TEST_NETWORK_PORT
     NETWORK_ADDRESS = TESTNET3_PEER_HOST_IP
 
-PRIVATE_KEY_LIST = ["f19c523315891e6e15ae0608a35eec2e00ebd6d1984cf167f46336dabd9b2de4", 
+PRIVATE_KEY_LIST = ["c9b74446725c99d429848f8093a347976784d133efec971343be004d5f9c7fdc",
+                    #"f19c523315891e6e15ae0608a35eec2e00ebd6d1984cf167f46336dabd9b2de4", 
                     #"d3484a00246dee175bfc092b7ed7bb3067ec78083035d9cfd34cec06f40c4cc2"
                     ]
 
 # The transaction hash of the previous 
-PREVIOUS_TRANSACTION_HASH_LIST = ["b11c5c3359087f6646b3ea2648bb9f33bfa7f1ea4e255b0ed92caafe23de79a0", #6.8
+PREVIOUS_TRANSACTION_HASH_LIST = ["71c32e01e653e4940daa173f14218d660e5b1532ccf25c6c84312efa730812f4", #4.99
                                   #"a94b239a16e923df5e4a447062f9c71a9d5cfb765086d593caf41aa01abb2441",
                                   ] #.6.9
 
@@ -54,15 +55,15 @@ PREVIOUS_TRANSACTION_OUTPUT_INDEX_LIST = [0,
                                           #0
                                           ]
 
-PREVIOUS_TRANSACTION_OUTPUT_PUBLIC_ADDRESS_LIST = ["myqGc9SzpYm3qFU83UNhMZ8mjCFqzmGi2x"
+PREVIOUS_TRANSACTION_OUTPUT_PUBLIC_ADDRESS_LIST = ["n2SQWnkE8iSauDnTYd3i3NtrTBngT4DboX"
                                                    ]
 
 
 # BTC Denomination <=> Satoshis: 100,000,000 -> 1 BTC
 #     - 0.40 BTC
-DESTINATION_SATOSHIS_LIST = [500000000]
+DESTINATION_SATOSHIS_LIST = [499000000]
 
-DESTINATION_PUBLIC_ADDRESS_LIST = ["n2SQWnkE8iSauDnTYd3i3NtrTBngT4DboX"]
+DESTINATION_PUBLIC_ADDRESS_LIST = ["myqGc9SzpYm3qFU83UNhMZ8mjCFqzmGi2x"]
 
 
 # New Transaction Inputs
