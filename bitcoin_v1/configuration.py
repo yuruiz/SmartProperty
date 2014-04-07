@@ -36,40 +36,40 @@ else:
     NETWORK_PORT = TEST_NETWORK_PORT
     NETWORK_ADDRESS = TESTNET3_PEER_HOST_IP
 
-hashtype = ['01'
-            #'\01',
+hashtype = ['01',
+            '01'
             ]
 
-PRIVATE_KEY_LIST = ["f19c523315891e6e15ae0608a35eec2e00ebd6d1984cf167f46336dabd9b2de4"
-                    #"c9b74446725c99d429848f8093a347976784d133efec971343be004d5f9c7fdc",
+PRIVATE_KEY_LIST = ["f19c523315891e6e15ae0608a35eec2e00ebd6d1984cf167f46336dabd9b2de4",
+                    "c9b74446725c99d429848f8093a347976784d133efec971343be004d5f9c7fdc"
                     ]
 
 # The transaction hash of the previous
-PREVIOUS_TRANSACTION_HASH_LIST = ["55fe5f8599add2a1fb91a104d16a67fba91d8f3fc24b9e2353b216ed4c015140"  # 4.99
-                                  #"deec9ca00cf034f2606b1f040d405fe221d9ab49c8eb48dd1aa2f2f3e0ec7b72",
-                                  ]  # .78
+PREVIOUS_TRANSACTION_HASH_LIST = ["2b8ec4f2f4fd072f3900092bc69c7b35c84bef0c30565c5da31d0d5fa5558573",  # 0.81
+                                  "deec9ca00cf034f2606b1f040d405fe221d9ab49c8eb48dd1aa2f2f3e0ec7b72" # 0.78
+                                  ]  
 
 
 # The Previous Output Transaction Index
 #     - This indicates which of the outputs in the previous transaction
 #       to send money from.
 #     - 0: First, 1: Second, ...
-PREVIOUS_TRANSACTION_OUTPUT_INDEX_LIST = [0
-                                          #0
-
+PREVIOUS_TRANSACTION_OUTPUT_INDEX_LIST = [0,
+                                          0
                                           ]
 
-PREVIOUS_TRANSACTION_OUTPUT_PUBLIC_ADDRESS_LIST = ["myqGc9SzpYm3qFU83UNhMZ8mjCFqzmGi2x"
-                                                   #"n2SQWnkE8iSauDnTYd3i3NtrTBngT4DboX",
+PREVIOUS_TRANSACTION_OUTPUT_PUBLIC_ADDRESS_LIST = ["myqGc9SzpYm3qFU83UNhMZ8mjCFqzmGi2x",
+                                                   "n2SQWnkE8iSauDnTYd3i3NtrTBngT4DboX"
                                                    #"n2SQWnkE8iSauDnTYd3i3NtrTBngT4DboX"
                                                    ]
 
 
 # BTC Denomination <=> Satoshis: 100,000,000 -> 1 BTC
 #     - 0.40 BTC
-DESTINATION_SATOSHIS_LIST = [499000000]
+DESTINATION_SATOSHIS_LIST = [158000000]
 
-DESTINATION_PUBLIC_ADDRESS_LIST = ["mjiu4Jwr48SzMhEvT6aaiNwPekPksXNRmf"]
+DESTINATION_PUBLIC_ADDRESS_LIST = ["mjiu4Jwr48SzMhEvT6aaiNwPekPksXNRmf"
+                                   ]
 
 
 # New Transaction Inputs
@@ -84,11 +84,11 @@ NEW_TRANSACTION_INPUT = [
     [PREVIOUS_TRANSACTION_HASH_LIST[0],
      PREVIOUS_TRANSACTION_OUTPUT_INDEX_LIST[0],
      PREVIOUS_TRANSACTION_OUTPUT_PUBLIC_ADDRESS_LIST[0],
-     PRIVATE_KEY_LIST[0]]
-    #[PREVIOUS_TRANSACTION_HASH_LIST[1],
-    # PREVIOUS_TRANSACTION_OUTPUT_INDEX_LIST[1],
-    # PREVIOUS_TRANSACTION_OUTPUT_PUBLIC_ADDRESS_LIST[1],
-    # PRIVATE_KEY_LIST[1]]
+     PRIVATE_KEY_LIST[0]],
+    [PREVIOUS_TRANSACTION_HASH_LIST[1],
+     PREVIOUS_TRANSACTION_OUTPUT_INDEX_LIST[1],
+     PREVIOUS_TRANSACTION_OUTPUT_PUBLIC_ADDRESS_LIST[1],
+     PRIVATE_KEY_LIST[1]]
 ]
 
 # New Transaction Outputs
