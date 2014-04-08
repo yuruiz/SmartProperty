@@ -22,8 +22,8 @@ TEST_NETWORK_PORT = 18333
 #        - testnet-seed.bluematt.me
 MAINNET_PEER_HOST_IP = "1.1.1.1"
 TESTNET3_PEER_HOST_IP = "95.211.121.211"
-TESTNET3_PEER_HOST_IP = "198.50.215.81"
-TESTNET3_PEER_HOST_IP = "testnet-seed.bitcoin.petertodd.org"
+TESTNET3_PEER_HOST_IP = "188.226.176.87"
+#TESTNET3_PEER_HOST_IP = "testnet-seed.bitcoin.petertodd.org"
 
 selectNetwork = "test"
 
@@ -66,7 +66,7 @@ PREVIOUS_TRANSACTION_OUTPUT_PUBLIC_ADDRESS_LIST = ["myqGc9SzpYm3qFU83UNhMZ8mjCFq
 
 # BTC Denomination <=> Satoshis: 100,000,000 -> 1 BTC
 #     - 0.40 BTC
-DESTINATION_SATOSHIS_LIST = [580000000]
+DESTINATION_SATOSHIS_LIST = [569000000]
 
 DESTINATION_PUBLIC_ADDRESS_LIST = ["mtBRkCj8GSc5kPYqhLdS4ahaTMXfk5trq1"
                                    ]
