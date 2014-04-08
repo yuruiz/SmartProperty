@@ -22,8 +22,8 @@ TEST_NETWORK_PORT = 18333
 #        - testnet-seed.bluematt.me
 MAINNET_PEER_HOST_IP = "1.1.1.1"
 TESTNET3_PEER_HOST_IP = "95.211.121.211"
-TESTNET3_PEER_HOST_IP = "188.226.176.87"
-#TESTNET3_PEER_HOST_IP = "testnet-seed.bitcoin.petertodd.org"
+#TESTNET3_PEER_HOST_IP = "188.226.176.87"
+TESTNET3_PEER_HOST_IP = "testnet-seed.bitcoin.petertodd.org"
 
 selectNetwork = "test"
 
@@ -37,16 +37,16 @@ else:
     NETWORK_ADDRESS = TESTNET3_PEER_HOST_IP
 
 hashtype = ['01',
-            '01'
+            '81'
             ]
 
-PRIVATE_KEY_LIST = ["f19c523315891e6e15ae0608a35eec2e00ebd6d1984cf167f46336dabd9b2de4",
-                    "fd3b98af3c17d6d29fed6f97c6f03519bbcd35a29fea632e0400090f2af61278"
+PRIVATE_KEY_LIST = ["d3484a00246dee175bfc092b7ed7bb3067ec78083035d9cfd34cec06f40c4cc2",
+                    "f19c523315891e6e15ae0608a35eec2e00ebd6d1984cf167f46336dabd9b2de4"
                     ]
 
 # The transaction hash of the previous
-PREVIOUS_TRANSACTION_HASH_LIST = ["00edd1416c59d47263dfd4bd37c47bd7acf167049b418f5dcaada88248b9c597",  # 4.99
-                                  "79d5fb7d73249ef1672744968ff6dbbf02d754e5a5a51d04f65d8b6aaa47729f" # 1.58
+PREVIOUS_TRANSACTION_HASH_LIST = ["a4c148369e0507fd7342e0bb4baf96e5cc9c2e903b76248b9320be5aeb56696a",  # 0.14
+                                  "4e85083ca1323f1a32b9ab70f23a37db5e53655b71d17d920c0cd9c564f00c40" # 0.1
                                   ]  
 
 
@@ -58,17 +58,17 @@ PREVIOUS_TRANSACTION_OUTPUT_INDEX_LIST = [0,
                                           0
                                           ]
 
-PREVIOUS_TRANSACTION_OUTPUT_PUBLIC_ADDRESS_LIST = ["myqGc9SzpYm3qFU83UNhMZ8mjCFqzmGi2x",
-                                                   "mjiu4Jwr48SzMhEvT6aaiNwPekPksXNRmf"
+PREVIOUS_TRANSACTION_OUTPUT_PUBLIC_ADDRESS_LIST = ["mtBRkCj8GSc5kPYqhLdS4ahaTMXfk5trq1",
+                                                   "myqGc9SzpYm3qFU83UNhMZ8mjCFqzmGi2x"
                                                    #"n2SQWnkE8iSauDnTYd3i3NtrTBngT4DboX"
                                                    ]
 
 
 # BTC Denomination <=> Satoshis: 100,000,000 -> 1 BTC
 #     - 0.40 BTC
-DESTINATION_SATOSHIS_LIST = [525000000]
+DESTINATION_SATOSHIS_LIST = [23000000]
 
-DESTINATION_PUBLIC_ADDRESS_LIST = ["mtBRkCj8GSc5kPYqhLdS4ahaTMXfk5trq1"
+DESTINATION_PUBLIC_ADDRESS_LIST = ["n2SQWnkE8iSauDnTYd3i3NtrTBngT4DboX"
                                    ]
 
 
