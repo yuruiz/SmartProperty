@@ -105,7 +105,7 @@ def buildRawTransaction(transactionInputList, transactionOutputList, hashtype):
                                                 "00" +
                                                 inputSequence)
             elif hashtype[x] == '81':
-                transactionInput[x] = (reversePreviousTransactionHash[x] +
+                transactionInput[x] += (reversePreviousTransactionHash[x] +
                                        previousTransactionOutputIndexHex[x] +
                                        scriptSigLength[x] +
                                        scriptSig[x] +
@@ -164,6 +164,8 @@ def buildRawTransaction(transactionInputList, transactionOutputList, hashtype):
                            hxTransactionBlockLockTime +
                            hxTransactionHashCode)
         transactioncount += 1
+
+    # print transaction
     return transaction
 
 
@@ -208,6 +210,7 @@ def buildSignedTransaction(privateKeyList, transactionInputList, transactionOutp
                             scriptSig +
                             inputSequence)
 
+        # print transactionInput
         return transactionInput
 
     def buildTransactionOutput(outputParameters):
