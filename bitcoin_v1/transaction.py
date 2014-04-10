@@ -105,7 +105,7 @@ def buildRawTransaction(transactionInputList, transactionOutputList, hashtype):
                                                 "00" +
                                                 inputSequence)
             elif hashtype[x] == '81':
-                transactionInput[x] += (reversePreviousTransactionHash[x] +
+                transactionInput[x] = (reversePreviousTransactionHash[x] +
                                        previousTransactionOutputIndexHex[x] +
                                        scriptSigLength[x] +
                                        scriptSig[x] +
@@ -150,12 +150,16 @@ def buildRawTransaction(transactionInputList, transactionOutputList, hashtype):
     hxTransactionOutputListCount = "%02x" % len(transactionOutputList)
     hxTransactionOutputList = "".join(map(buildTransactionOutput, transactionOutputList))
     hxTransactionBlockLockTime = "00000000"
-    hxTransactionHashCode = "01000000"
+    # hxTransactionHashCode = "01000000"
 
     transaction = []
     transactioncount = 0
     # print len(hxTransactionInputListCount)
     for x in hxTransactionInputList:
+        if hashtype[transactioncount] == '01':
+            hxTransactionHashCode = "01000000"
+        elif hashtype[transactioncount] == '81':
+            hxTransactionHashCode = "81000000"
         transaction.append(hxTransactionVersion +
                            hxTransactionInputListCount[transactioncount] +
                            x +
