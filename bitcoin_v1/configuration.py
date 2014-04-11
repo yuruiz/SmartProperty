@@ -56,7 +56,7 @@ PREVIOUS_TRANSACTION_OUTPUT_INDEX_LIST = [3,
                                           ]
 
 PREVIOUS_TRANSACTION_OUTPUT_PUBLIC_ADDRESS_LIST = ["n2SQWnkE8iSauDnTYd3i3NtrTBngT4DboX"
-                                                   ]
+                                                    ]
 
 
 # BTC Denomination <=> Satoshis: 100,000,000 -> 1 BTC
