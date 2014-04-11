@@ -40,13 +40,13 @@ hashtype = ['01',
             '81'
             ]
 
-PRIVATE_KEY_LIST = ["d3484a00246dee175bfc092b7ed7bb3067ec78083035d9cfd34cec06f40c4cc2",
-                    "f19c523315891e6e15ae0608a35eec2e00ebd6d1984cf167f46336dabd9b2de4"
+PRIVATE_KEY_LIST = ["c9b74446725c99d429848f8093a347976784d133efec971343be004d5f9c7fdc",
+                    "d3484a00246dee175bfc092b7ed7bb3067ec78083035d9cfd34cec06f40c4cc2"
                     ]
 
 # The transaction hash of the previous
-PREVIOUS_TRANSACTION_HASH_LIST = ["a4c148369e0507fd7342e0bb4baf96e5cc9c2e903b76248b9320be5aeb56696a",  # 0.14
-                                  "4e85083ca1323f1a32b9ab70f23a37db5e53655b71d17d920c0cd9c564f00c40" # 0.1
+PREVIOUS_TRANSACTION_HASH_LIST = ["b6d1b89f873d29c5909307ed303f367a0606b05f526cef606252320d3986ba77",  # 1
+                                  "d090cfb9359fba125c46f9a4a3009fcbc321e22f885681afae063ab2892b3363" # 1
                                   ]  
 
 
@@ -58,17 +58,17 @@ PREVIOUS_TRANSACTION_OUTPUT_INDEX_LIST = [0,
                                           0
                                           ]
 
-PREVIOUS_TRANSACTION_OUTPUT_PUBLIC_ADDRESS_LIST = ["mtBRkCj8GSc5kPYqhLdS4ahaTMXfk5trq1",
-                                                   "myqGc9SzpYm3qFU83UNhMZ8mjCFqzmGi2x"
+PREVIOUS_TRANSACTION_OUTPUT_PUBLIC_ADDRESS_LIST = ["n2SQWnkE8iSauDnTYd3i3NtrTBngT4DboX",
+                                                   "mtBRkCj8GSc5kPYqhLdS4ahaTMXfk5trq1"
                                                    #"n2SQWnkE8iSauDnTYd3i3NtrTBngT4DboX"
                                                    ]
 
 
 # BTC Denomination <=> Satoshis: 100,000,000 -> 1 BTC
 #     - 0.40 BTC
-DESTINATION_SATOSHIS_LIST = [23000000]
+DESTINATION_SATOSHIS_LIST = [199000000]
 
-DESTINATION_PUBLIC_ADDRESS_LIST = ["n2SQWnkE8iSauDnTYd3i3NtrTBngT4DboX"
+DESTINATION_PUBLIC_ADDRESS_LIST = ["mjiu4Jwr48SzMhEvT6aaiNwPekPksXNRmf"
                                    ]
 
 
