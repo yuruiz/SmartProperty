@@ -12,7 +12,7 @@ versionMessage = message.buildVersionMessage(configuration.NETWORK_MAGIC, config
 stxn = transaction.buildSignedTransaction(configuration.PRIVATE_KEY_LIST, 
                                           configuration.NEW_TRANSACTION_INPUT, 
                                           configuration.NEW_TRANSACTION_OUTPUT)
-
+print stxn
 # Verifies the signed transaction, any error here will abort the socket creation
 #txnUtils.verifyTxnSignature(stxn)
 
