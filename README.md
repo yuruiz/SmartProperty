@@ -9,6 +9,15 @@ bitcoins
 
 Note: If you are not using Eclipse as IDE, then you can ignore the two project files, using Eclipse will greatly simplify stuff though.
 
+2014-04-11 - Breakthrough Milestone:
+====================================
+
+Added support for SIGHASH_ANYONECANPAY.
+
+http://tbtc.blockr.io/tx/info/8f736e16f482e861bd1432dee3d5d2a5b5453832ea0b310703c755127e4fb2d4
+http://testnet.btclook.com/txn/8f736e16f482e861bd1432dee3d5d2a5b5453832ea0b310703c755127e4fb2d4
+
+
 2014-03-27 (bitcoin_v1):
 ========================
 
