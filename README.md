@@ -17,6 +17,11 @@ Added support for SIGHASH_ANYONECANPAY.
 http://tbtc.blockr.io/tx/info/8f736e16f482e861bd1432dee3d5d2a5b5453832ea0b310703c755127e4fb2d4
 http://testnet.btclook.com/txn/8f736e16f482e861bd1432dee3d5d2a5b5453832ea0b310703c755127e4fb2d4
 
+Few things to note:
+- Testnet DNS resolved servers may be unstable for testing.
+- After creating the signed transaction, should use bitcoin client to send the signed raw transaction to the Bitcoin network.
+- Biteasy.com testnet status site is down.
+
 
 2014-03-27 (bitcoin_v1):
 ========================
