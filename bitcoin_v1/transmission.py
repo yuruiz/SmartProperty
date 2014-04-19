@@ -14,6 +14,7 @@ stxn = transaction.buildSignedTransaction(configuration.PRIVATE_KEY_LIST,
                                           configuration.NEW_TRANSACTION_OUTPUT,
                                           configuration.hashtype)
 
+print (str(stxn))
 # Verifies the signed transaction, any error here will abort the socket creation
 # txnUtils.verifyTxnSignature(stxn)
 
@@ -40,4 +41,4 @@ sock.recv(1000)
 
 # Sends the actual transaction message
 sock.send(transactionMessage)
-# sock.recv(1000)
+sock.recv(1000)

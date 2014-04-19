@@ -40,35 +40,38 @@ hashtype = ['01',
             '81'
             ]
 
-PRIVATE_KEY_LIST = ["c9b74446725c99d429848f8093a347976784d133efec971343be004d5f9c7fdc",
-                    "d3484a00246dee175bfc092b7ed7bb3067ec78083035d9cfd34cec06f40c4cc2"
+PRIVATE_KEY_LIST = ["b48f16ae18643c3c20892ca21389744f53ab66474e007c670e59ceba9ed05f72",
+                    "4207f3eb1177e64f358694d954f6be47692a87b9a552bedc26ce1986735d25cd"
                     ]
 
-# The transaction hash of the previous
-PREVIOUS_TRANSACTION_HASH_LIST = ["b6d1b89f873d29c5909307ed303f367a0606b05f526cef606252320d3986ba77",  # 1
-                                  "d090cfb9359fba125c46f9a4a3009fcbc321e22f885681afae063ab2892b3363" # 1
-                                  ]  
-
+PREVIOUS_TRANSACTION_OUTPUT_PUBLIC_ADDRESS_LIST = ["mp3pCv8oWH1sNrDp3SPPhg8SwRLtNnXnD5",
+                                                   "mpzoAtjbX6sDZUny3BVSnbQS5Gvhs9vF4E"
+                                                  #"n2SQWnkE8iSauDnTYd3i3NtrTBngT4DboX"
+                                                   ]
 
 # The Previous Output Transaction Index
 #     - This indicates which of the outputs in the previous transaction
 #       to send money from.
 #     - 0: First, 1: Second, ...
-PREVIOUS_TRANSACTION_OUTPUT_INDEX_LIST = [0,
+PREVIOUS_TRANSACTION_OUTPUT_INDEX_LIST = [1,
                                           0
                                           ]
 
-PREVIOUS_TRANSACTION_OUTPUT_PUBLIC_ADDRESS_LIST = ["n2SQWnkE8iSauDnTYd3i3NtrTBngT4DboX",
-                                                   "mtBRkCj8GSc5kPYqhLdS4ahaTMXfk5trq1"
-                                                   #"n2SQWnkE8iSauDnTYd3i3NtrTBngT4DboX"
-                                                   ]
-
+# The transaction hash of the previous
+PREVIOUS_TRANSACTION_HASH_LIST = ["242ab494e96cfb7bfab68cbdea805f2ead5e1c43be93d835ae283dbb883f29b2",  # 2.7
+                                  "904330c0d98bbb19e10c98fb69a2fdc488b5db7b078220f3ded9ce57af1ab5c5" # 2.5
+                                  ]
 
 # BTC Denomination <=> Satoshis: 100,000,000 -> 1 BTC
 #     - 0.40 BTC
-DESTINATION_SATOSHIS_LIST = [199000000]
 
-DESTINATION_PUBLIC_ADDRESS_LIST = ["mjiu4Jwr48SzMhEvT6aaiNwPekPksXNRmf"
+DESTINATION_SATOSHIS_LIST = [200000000,
+                             200000000,
+                             100000000]
+
+DESTINATION_PUBLIC_ADDRESS_LIST = ["miy7SPbChbUK9Wy99GPZZgxYiK3ZsVgJKZ",
+                                   "mk9EgeaLZ26AL4Zb2hjgaU2mTLbYFUU8Ni",
+                                   "msACxpHYZ2H8JAxuk8CSudG3Cn6ETYSE2e"
                                    ]
 
 
@@ -98,7 +101,9 @@ NEW_TRANSACTION_INPUT = [
 #        - This is the address where you are transferring the Bitcoin to
 NEW_TRANSACTION_OUTPUT = [
     [DESTINATION_SATOSHIS_LIST[0],
-     DESTINATION_PUBLIC_ADDRESS_LIST[0]]
-    #[DESTINATION_SATOSHIS_LIST[1],
-    # DESTINATION_PUBLIC_ADDRESS_LIST[1]],
+     DESTINATION_PUBLIC_ADDRESS_LIST[0]],
+    [DESTINATION_SATOSHIS_LIST[1],
+     DESTINATION_PUBLIC_ADDRESS_LIST[1]],
+    [DESTINATION_SATOSHIS_LIST[2],
+     DESTINATION_PUBLIC_ADDRESS_LIST[2]]
 ]

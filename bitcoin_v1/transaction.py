@@ -181,8 +181,10 @@ def buildSignedTransaction(privateKeyList, transactionInputList, transactionOutp
     def buildScriptSig(privateKey, doubleSHA256_RawTransaction, hashtype):
 
         sk = ecdsa.SigningKey.from_string(privateKey.decode('hex'), curve=ecdsa.SECP256k1)
+        
         # 01 is hashtype
         sig = sk.sign_digest(doubleSHA256_RawTransaction, sigencode=ecdsa.util.sigencode_der) + hashtype.decode('hex')
+       
         pubKey = publicKey.getECDAPublicKeyWithPrefix(publicKey.BITCOIN_PROTOCOL_PUBLIC_KEY_PREFIX, privateKey)
         scriptSig = utils.varstr(sig).encode('hex') + utils.varstr(pubKey.decode('hex')).encode('hex')
 
