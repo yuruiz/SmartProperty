@@ -155,14 +155,14 @@ def buildRawTransaction(transactionInputList, transactionOutputList, hashtype):
     transaction = []
     transactioncount = 0
     # print len(hxTransactionInputListCount)
-    for x in hxTransactionInputList:
+    for transactionInput in hxTransactionInputList:
         if hashtype[transactioncount] == '01':
             hxTransactionHashCode = "01000000"
         elif hashtype[transactioncount] == '81':
             hxTransactionHashCode = "81000000"
         transaction.append(hxTransactionVersion +
                            hxTransactionInputListCount[transactioncount] +
-                           x +
+                           transactionInput +
                            hxTransactionOutputListCount +
                            hxTransactionOutputList +
                            hxTransactionBlockLockTime +
