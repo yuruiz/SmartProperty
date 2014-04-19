@@ -40,11 +40,11 @@ hashtype = ['01',
             '81'
             ]
 
-PRIVATE_KEY_LIST = ["b48f16ae18643c3c20892ca21389744f53ab66474e007c670e59ceba9ed05f72",
+PRIVATE_KEY_LIST = ["58d0987eb71b473ce41059fdabe6967cffeaf14e6e3a9d036ee1b0fd83d9b80a",
                     "4207f3eb1177e64f358694d954f6be47692a87b9a552bedc26ce1986735d25cd"
                     ]
 
-PREVIOUS_TRANSACTION_OUTPUT_PUBLIC_ADDRESS_LIST = ["mp3pCv8oWH1sNrDp3SPPhg8SwRLtNnXnD5",
+PREVIOUS_TRANSACTION_OUTPUT_PUBLIC_ADDRESS_LIST = ["miy7SPbChbUK9Wy99GPZZgxYiK3ZsVgJKZ",
                                                    "mpzoAtjbX6sDZUny3BVSnbQS5Gvhs9vF4E"
                                                   #"n2SQWnkE8iSauDnTYd3i3NtrTBngT4DboX"
                                                    ]
@@ -53,23 +53,23 @@ PREVIOUS_TRANSACTION_OUTPUT_PUBLIC_ADDRESS_LIST = ["mp3pCv8oWH1sNrDp3SPPhg8SwRLt
 #     - This indicates which of the outputs in the previous transaction
 #       to send money from.
 #     - 0: First, 1: Second, ...
-PREVIOUS_TRANSACTION_OUTPUT_INDEX_LIST = [1,
-                                          0
+PREVIOUS_TRANSACTION_OUTPUT_INDEX_LIST = [0,
+                                          1
                                           ]
 
 # The transaction hash of the previous
-PREVIOUS_TRANSACTION_HASH_LIST = ["242ab494e96cfb7bfab68cbdea805f2ead5e1c43be93d835ae283dbb883f29b2",  # 2.7
-                                  "904330c0d98bbb19e10c98fb69a2fdc488b5db7b078220f3ded9ce57af1ab5c5" # 2.5
+PREVIOUS_TRANSACTION_HASH_LIST = ["b13b56946175584049409b0715bf9fe3527b524d3438ee118eac67d07b3ff68c",  # 5
+                                  "b13b56946175584049409b0715bf9fe3527b524d3438ee118eac67d07b3ff68c" # 10
                                   ]
 
 # BTC Denomination <=> Satoshis: 100,000,000 -> 1 BTC
 #     - 0.40 BTC
 
-DESTINATION_SATOSHIS_LIST = [200000000,
-                             200000000,
-                             100000000]
+DESTINATION_SATOSHIS_LIST = [500000000,
+                             500000000,
+                             500000000]
 
-DESTINATION_PUBLIC_ADDRESS_LIST = ["miy7SPbChbUK9Wy99GPZZgxYiK3ZsVgJKZ",
+DESTINATION_PUBLIC_ADDRESS_LIST = ["mp3pCv8oWH1sNrDp3SPPhg8SwRLtNnXnD5",
                                    "mk9EgeaLZ26AL4Zb2hjgaU2mTLbYFUU8Ni",
                                    "msACxpHYZ2H8JAxuk8CSudG3Cn6ETYSE2e"
                                    ]
