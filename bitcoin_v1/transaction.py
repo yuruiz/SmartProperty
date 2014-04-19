@@ -49,9 +49,28 @@ def createScriptPublicKey(publicAddress):
                    ("%02x" % opCodeDefinitions.PUSH_DATA14) +
                    publicAddress160BitHash +
                    ("%02x" % opCodeDefinitions.OP_EQUALVERIFY) +
-                   ("%02x" % opCodeDefinitions.OP_CHECKSIG))
+                   ("%02x" % opCodeDefinitions.OP_CHECKSIG) + 
+                   ("%02x" % opCodeDefinitions.OP_CHECKSIGVERIFY) +
+                   ("%02x" % opCodeDefinitions.OP_TRUE)
+                   )
 
     return buildScript
+
+def createPreviousScriptPublicKey(publicAddress):
+    assert len(publicAddress) == 34
+
+    publicAddress160BitHash = get160BitHashFromPublicAddress(publicAddress)
+
+    buildScript = (("%02x" % opCodeDefinitions.OP_DUP) +
+                   ("%02x" % opCodeDefinitions.OP_HASH160) +
+                   ("%02x" % opCodeDefinitions.PUSH_DATA14) +
+                   publicAddress160BitHash +
+                   ("%02x" % opCodeDefinitions.OP_EQUALVERIFY) +
+                   ("%02x" % opCodeDefinitions.OP_CHECKSIG) 
+                   )
+
+    return buildScript
+
 
 # This can support multiple transaction inputs but signing multiple inputs is not yet supported
 
@@ -81,7 +100,7 @@ def buildRawTransaction(transactionInputList, transactionOutputList, hashtype):
 
             reversePreviousTransactionHash.append(previousTransactionHash.decode("hex")[::-1].encode("hex"))
             previousTransactionOutputIndexHex.append(struct.pack('<L', previousTransactionOutputIndex).encode('hex'))
-            scriptSig.append(createScriptPublicKey(previousTransactionOutputPublicAddress))
+            scriptSig.append(createPreviousScriptPublicKey(previousTransactionOutputPublicAddress))
             scriptSigLength.append("%02x" % len(scriptSig[count].decode("hex")))
 
             count += 1

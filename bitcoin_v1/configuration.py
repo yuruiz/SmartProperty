@@ -37,15 +37,15 @@ else:
     NETWORK_ADDRESS = TESTNET3_PEER_HOST_IP
 
 hashtype = ['01',
-            '81'
+            #'81'
             ]
 
-PRIVATE_KEY_LIST = ["58d0987eb71b473ce41059fdabe6967cffeaf14e6e3a9d036ee1b0fd83d9b80a",
-                    "4207f3eb1177e64f358694d954f6be47692a87b9a552bedc26ce1986735d25cd"
+PRIVATE_KEY_LIST = ["fd3b98af3c17d6d29fed6f97c6f03519bbcd35a29fea632e0400090f2af61278",
+                    #"e6758ad160b894567fcc1d9f7038cd19b92592a13768363c4c8d759b61a34332"
                     ]
 
-PREVIOUS_TRANSACTION_OUTPUT_PUBLIC_ADDRESS_LIST = ["miy7SPbChbUK9Wy99GPZZgxYiK3ZsVgJKZ",
-                                                   "mpzoAtjbX6sDZUny3BVSnbQS5Gvhs9vF4E"
+PREVIOUS_TRANSACTION_OUTPUT_PUBLIC_ADDRESS_LIST = ["mjiu4Jwr48SzMhEvT6aaiNwPekPksXNRmf",
+                                                   #"mjiu4Jwr48SzMhEvT6aaiNwPekPksXNRmf"
                                                   #"n2SQWnkE8iSauDnTYd3i3NtrTBngT4DboX"
                                                    ]
 
@@ -54,25 +54,27 @@ PREVIOUS_TRANSACTION_OUTPUT_PUBLIC_ADDRESS_LIST = ["miy7SPbChbUK9Wy99GPZZgxYiK3Z
 #       to send money from.
 #     - 0: First, 1: Second, ...
 PREVIOUS_TRANSACTION_OUTPUT_INDEX_LIST = [0,
-                                          1
+                                         # 0
                                           ]
 
 # The transaction hash of the previous
-PREVIOUS_TRANSACTION_HASH_LIST = ["b13b56946175584049409b0715bf9fe3527b524d3438ee118eac67d07b3ff68c",  # 5
-                                  "b13b56946175584049409b0715bf9fe3527b524d3438ee118eac67d07b3ff68c" # 10
+PREVIOUS_TRANSACTION_HASH_LIST = ["5eb23f5bd71b6f9fe4f2e55c1a3b9ed16a68b9bee917f86bac94002508a0ed46",  # 1.2
+                                  #"" # 10
                                   ]
 
 # BTC Denomination <=> Satoshis: 100,000,000 -> 1 BTC
 #     - 0.40 BTC
 
-DESTINATION_SATOSHIS_LIST = [500000000,
-                             500000000,
-                             500000000]
+DESTINATION_SATOSHIS_LIST = [120000000,
+                             #50000000,
+                             #50000000
+                             ]
 
-DESTINATION_PUBLIC_ADDRESS_LIST = ["mp3pCv8oWH1sNrDp3SPPhg8SwRLtNnXnD5",
-                                   "mk9EgeaLZ26AL4Zb2hjgaU2mTLbYFUU8Ni",
-                                   "msACxpHYZ2H8JAxuk8CSudG3Cn6ETYSE2e"
+DESTINATION_PUBLIC_ADDRESS_LIST = ["mk9EgeaLZ26AL4Zb2hjgaU2mTLbYFUU8Ni",
+                                   #"mk9EgeaLZ26AL4Zb2hjgaU2mTLbYFUU8Ni",
+                                   #"msACxpHYZ2H8JAxuk8CSudG3Cn6ETYSE2e"
                                    ]
+
 
 
 # New Transaction Inputs
@@ -88,10 +90,10 @@ NEW_TRANSACTION_INPUT = [
      PREVIOUS_TRANSACTION_OUTPUT_INDEX_LIST[0],
      PREVIOUS_TRANSACTION_OUTPUT_PUBLIC_ADDRESS_LIST[0],
      PRIVATE_KEY_LIST[0]],
-    [PREVIOUS_TRANSACTION_HASH_LIST[1],
-     PREVIOUS_TRANSACTION_OUTPUT_INDEX_LIST[1],
-     PREVIOUS_TRANSACTION_OUTPUT_PUBLIC_ADDRESS_LIST[1],
-     PRIVATE_KEY_LIST[1]]
+    #[PREVIOUS_TRANSACTION_HASH_LIST[1],
+    # PREVIOUS_TRANSACTION_OUTPUT_INDEX_LIST[1],
+    # PREVIOUS_TRANSACTION_OUTPUT_PUBLIC_ADDRESS_LIST[1],
+    # PRIVATE_KEY_LIST[1]]
 ]
 
 # New Transaction Outputs
@@ -102,8 +104,8 @@ NEW_TRANSACTION_INPUT = [
 NEW_TRANSACTION_OUTPUT = [
     [DESTINATION_SATOSHIS_LIST[0],
      DESTINATION_PUBLIC_ADDRESS_LIST[0]],
-    [DESTINATION_SATOSHIS_LIST[1],
-     DESTINATION_PUBLIC_ADDRESS_LIST[1]],
-    [DESTINATION_SATOSHIS_LIST[2],
-     DESTINATION_PUBLIC_ADDRESS_LIST[2]]
+    #[DESTINATION_SATOSHIS_LIST[1],
+    # DESTINATION_PUBLIC_ADDRESS_LIST[1]],
+    #[DESTINATION_SATOSHIS_LIST[2],
+    # DESTINATION_PUBLIC_ADDRESS_LIST[2]]
 ]
