@@ -1,0 +1,29 @@
+html { 
+  background: url(../img/4.jpg) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+h1 {
+	color: white;
+	text-align: center;
+	text-rendering: optimizeLegibility;
+	text-shadow: white 0 2px 3px;
+}
+
+img {
+	margin-left: 20%;
+	-webkit-animation: showup_a 2.7s 1 alternate linear forwards 1s;
+}
+
+@-webkit-keyframes showup_a {
+	0%   { -webkit-transform: scale(0.0);}
+	50% { -webkit-transform: scale(0.5) }
+	60% { -webkit-transform: scale(1) }
+	70% { -webkit-transform: scale(2) }
+	80% { -webkit-transform: scale(3) }
+	90% { -webkit-transform: scale(4) }
+	100% { -webkit-transform: scale(5)}
+}

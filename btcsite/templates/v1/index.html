@@ -1,0 +1,123 @@
+<!doctype html>
+<html>
+	<head>
+		<title> Bitcoin Loan </title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Lato" />
+		{% load staticfiles %}
+		<link rel="stylesheet" href="{% static "css/index.css" %}"  />
+		<!--<link rel="stylesheet" href="css/style.css">-->
+		<!--<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+		<script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script> 
+		<script type="text/javascript" src="js/jQuery.js"></script>
+		<script type="text/javascript" src="js/hoverIntent.js"></script>
+		<script type="text/javascript" src="js/welcomePage/welcomePage.js"></script>-->
+	</head>
+
+	<body>
+		<div class="top">
+			<span class="topImage">
+				<img id="bitcoinImg" src="{% static "img/bitcoin_top.png" %}"/>
+			</span>
+			<span class="topTextLeft">Secured Bitcoin Loan</span>
+			<span class="topTextRight">Network Security Project</span>
+		</div>
+
+		<div class="front">
+			<div class="frontFormBackground1">
+				<div class="frontForm1">
+					<h1><span id="bitcoin">Bitcoin</span> Loan</h1>
+					<div class="content">
+						Please help me to decide what to write here... blabla... Please help me to decide what to write here... blabla... Please help me to decide what to write here... blablabla... Please help me to decide what to write here... 
+					</div>
+					<p></p>
+					<div class="content">
+						Please help me to decide what to write here... blabla... Please help me to decide what to write here... blabla... Please help me to decide what to write here... blablabla... Please help me to decide what to write here... blabla... Please help me to decide what to write here... blabdfdfla... blabla... blabdfdfla... Please help me to decide what to write here...
+					</div>
+				</div>
+			</div>
+			
+			<div class="frontFormBackground2">
+				<div id="formBackground2">		
+					<div class="frontForm3">
+						<h1>Sign Up</h1>
+					</div>
+					<div id="appearWrapper">
+						<form action="/signUp/" method="get">
+							<div class="inset">
+								<p>
+								    <label for="email">EMAIL ADDRESS</label>
+								    <input type="text" name="email" id="email">
+								</p>
+								<p>
+								    <label for="password">PASSWORD</label>
+								    <input type="password" name="password" id="password">
+								</p>
+								<p>
+								    <input type="radio" name="type1" id="debtor1" value="debtor1" checked>
+								    <label for="debtor1">Debtor</label>
+	  							</p>
+	  							<p>
+								    <input type="radio" name="type1" id="creditor1" value=="creditor1">
+								    <label for="creditor1">Creditor</label>
+	  							</p>
+							</div>
+							<p class="p-container">
+								<span>Forgot password ?</span>
+							    <input type="submit" name="go" id="go" value="Sign Up">
+							</p>
+		    			</form>
+	    			</div>
+				</div>
+
+				<div id="formBackground1">		
+					<div class="frontForm2">
+						<h1>Sign In</h1>
+					</div>
+					<div id="disappearWrapper">
+						<form action="/signIn/" method="get">
+							<div class="inset">
+								<p>
+								    <label for="email">EMAIL ADDRESS</label>
+								    <input type="text" name="email" id="email">
+								</p>
+								<p>
+								    <label for="password">PASSWORD</label>
+								    <input type="password" name="password" id="password">
+								</p>
+								<p>
+								    <input type="radio" name="type2" id="debtor2" value="debtor2" checked>
+								    <label for="debtor2">Debtor</label>
+	  							</p>
+	  							<p>
+								    <input type="radio" name="type2" id="creditor2" value="creditor2" >
+								    <label for="creditor2">Creditor</label>
+	  							</p>
+							</div>
+							<p class="p-container">
+								<span>Forgot password ?</span>
+							    <input type="submit" name="go" id="go" value="Sign In">
+							</p>
+		    			</form>
+	    			</div>
+				</div>
+
+			</div>
+
+			<div class="frontImg">
+				<img id="bitcoinImg" src="{% static "img/bitcoin.png" %}"/>
+			</div>
+		</div>
+
+		<div class="pageFooter_welcomepage">
+			<span>
+				<img id="scrollDownArrow" src="{% static "img/arrow_down.png" %}"/>
+			</span>
+		</div>
+
+		<div class="contact">
+			<div class="contactWrapper">
+			</div>
+		</div>	
+	</body>
+</html>

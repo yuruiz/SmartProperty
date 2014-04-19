@@ -1,0 +1,406 @@
+html { 
+  background: url(../img/5.jpg) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  font-size: 18px;
+}
+
+body {
+    margin: 0 0 0 0;
+}
+
+.front {
+	width: 100%;
+	height: 100%;
+}
+
+.topTextLeft {
+	position: absolute;
+	top: 0.7rem;
+	font-family: sans-serif;
+	left: 2.5rem;
+}
+
+.topTextRight {
+	position: absolute;
+	top: 0.7rem;
+	right: 2.5rem;
+	font-family: sans-serif;
+	font-style: italic;
+}
+
+.top {
+	height: 1.5rem;
+	color: white;
+	padding: 0.6rem 0.5rem 0.7rem 0.6rem;
+//	background-color: #244358;
+//	background-color: #2B3A42;
+	background-color: black;
+}
+
+.frontFormBackground1 {
+	z-index: -1;
+	position: absolute;
+	display: inline-block;
+	top: 20%;
+	margin-left: 20%;
+	width: 30%;
+	height: 60%;
+	min-height: 540px;
+	color: white;
+	background-color: rgba(0, 0, 0, 0.8);
+	border-radius: 6px;
+	text-decoration: none;
+}
+
+.frontFormBackground2 {
+	position: absolute;
+	display: inline-block;
+	top: 20%;
+	margin-left: 55%;
+	width: 30%;
+	height: 60%;
+	min-height: 550px;
+	color: white;
+	border-radius: 6px;
+	text-decoration: none;
+}
+
+.frontForm2 {
+	position: relative;
+	padding-top: 10px;
+}
+
+.frontForm3 {
+	position: relative;
+	padding-top: 5%;
+	transition: all .2s ease-in-out;
+	-webkit-transition: all .2s ease-in-out;
+}
+
+#formBackground1 form {
+	opacity: 1;
+	transition: all .2s ease-in-out;
+	-webkit-transition: all .3s ease-in-out;
+}
+
+#formBackground2 form {
+	opacity: 0;
+	top: -100px;
+	transition: all .2s ease-in-out;
+	-webkit-transition: all .3s ease-in-out;
+}
+
+#formBackground2:hover {
+	top: 20%;
+	height: 72%;
+	min-height: 350px;
+}
+
+#formBackground2:hover form {
+	opacity: 1;
+}
+
+#formBackground2:hover ~ #formBackground1 {
+	height: 20%;
+	min-height: 20px;
+}
+
+#formBackground2:hover ~ #formBackground1 form {
+	opacity: 0;
+}
+
+#formBackground1 {
+	z-index: 10;
+	float: left;
+	position: absolute;
+	width: 100%;
+	height: 70%;
+	min-height: 320px;
+	color: white;
+	background-color: rgba(0, 0, 0, 0.8);
+	border-radius: 6px;
+	text-decoration: none;
+	transition: all .2s ease-in-out;
+	-webkit-transition: all .2s ease-in-out;
+}
+
+#formBackground2 {
+	z-index: 20;
+	float: left;
+	top: 70%;
+	margin-top: 8%;
+	position: absolute;
+	width: 100%;
+	height: 22%;
+	min-height: 120px;
+	color: white;
+	background-color: rgba(0, 0, 0, 0.8);
+	border-radius: 6px;
+	text-decoration: none;
+	transition: all .2s ease-in-out;
+	-webkit-transition: all .2s ease-in-out;
+}
+
+.frontForm1 {
+	position: absolute;
+	opacity: 1;
+	margin: 10% 15% 30% 15%;
+	width: 70%;
+	height: 25%;
+	color: white;
+	border-radius: 6px;
+	text-decoration: none;
+}
+
+form {
+  font-family: "HelveticaNeue-Light","Helvetica Neue Light","Helvetica Neue",Helvetica,Arial,"Lucida Grande",sans-serif; 
+  width: 70%;
+  margin: 0 auto;
+  font-size: 13px;
+}
+
+form:after {
+  content:"";
+  display:block;
+  position:absolute;
+  height:1px;
+  width:80%;
+  left:20%;
+}
+
+form:before {
+  content:"";
+  display:block;
+  position:absolute;
+  width:8px;
+  height:5px;
+  left:34%;
+}
+
+label[for=debtor1],
+label[for=debtor2],
+label[for=creditor1],
+label[for=creditor2] {
+  color:white;
+  display:inline-block;
+  padding-bottom:0;
+  padding-top:0px;
+}
+
+input[type=checkbox] {
+ 	display:inline-block;
+  vertical-align:top;
+}
+
+label {
+  color:#666;
+  display:block;
+  padding-bottom:4px;
+}
+
+input[type=text],
+input[type=password] {
+  width: 95%;
+  font-size: 16px;
+  padding:8px 5px;
+  background: linear-gradient(#1f2124, #27292c);
+  border:1px solid #222;
+  box-shadow:
+    0 1px 0 rgba(255,255,255,0.1);
+  border-radius:0.3em;
+  margin-bottom:2px;
+  color: white;
+}
+
+.p-container {
+ 	padding:0 5px 10px 5px; 
+}
+
+.p-container:after {
+ 	clear:both;
+  display:table;
+  content:"";
+}
+
+.p-container span {
+  display:block;
+  float:left;
+  color:#0d93ff;
+  padding-bottom:8px;
+}
+
+input[type=submit] {
+  width: 100%;
+  padding:5px 20px;
+  border:1px solid rgba(0,0,0,0.4);
+  text-shadow:0 -1px 0 rgba(0,0,0,0.4);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.3),
+    inset 0 10px 10px rgba(255,255,255,0.1);
+  border-radius:0.3em;
+  background:#0184ff;
+  color:white;
+  float:right;
+  cursor:pointer;
+  font-size:15px;
+}
+
+input[type=submit]:hover {
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.3),
+    inset 0 -10px 10px rgba(255,255,255,0.1);
+}
+
+input[type=text]:hover,
+input[type=password]:hover,
+label:hover ~ input[type=text],
+label:hover ~ input[type=password] {
+ 	background:#27292c;
+}
+
+#bitcoin {
+	font-size: 48px;
+	color: #FFE11A;
+}
+
+h1 {
+	color: white;
+	text-align: center;
+	text-rendering: optimizeLegibility;
+	font-family: 'Lato', serif;
+	-webkit-margin-before: 0em;
+	-webkit-margin-after: 0;
+	-webkit-margin-start: 0px;
+	-webkit-margin-end: 0px;
+}
+
+img {
+	z-index: 100;
+	margin-left: 0%;
+	max-height:100%;
+	max-width:100%;
+}	
+
+.frontImg {
+	z-index: 100;
+}
+
+.frontImg #bitcoinImg {
+	z-index: 100;
+	margin-left: 13%;
+	margin-top: 4%;
+	transform: rotate(-20deg);	
+	-webkit-transform: rotate(-20deg);	
+}
+
+.frontImg #bitcoinImg:hover {
+	animation-name: tossing;
+	-webkit-animation-name: tossing;	
+
+	animation-duration: 0.2s;	
+	-webkit-animation-duration: 0.2s;
+
+	animation-iteration-count: infinite;
+	-webkit-animation-iteration-count: infinite;
+
+	animation-timing-function:linear;
+	-webkit-animation-timing-function:linear;
+}
+
+@keyframes tossing {
+	0% {
+		transform: rotate(-20deg);	
+	}
+	50% {
+		transform: rotate(20deg);
+	}
+	100% {
+		transform: rotate(-20deg);	
+	}						
+}
+
+@-webkit-keyframes tossing {
+	0% {
+		-webkit-transform: rotate(-20deg);	
+	}
+	50% {
+		-webkit-transform: rotate(20deg);
+	}
+	100% {
+		-webkit-transform: rotate(-20deg);	
+	}				
+}
+
+.pageFooter_welcomepage {
+	position: absolute;
+	top: 93%;
+	margin-left: 45%;
+}
+
+.pageFooter_welcomepage img {
+	margin-left: 20%;
+	width: 40%;
+	animation-name: floating;
+	-webkit-animation-name: floating;
+
+	animation-duration: 1.5s;	
+	-webkit-animation-duration: 1.5s;
+
+	animation-iteration-count: infinite;
+	-webkit-animation-iteration-count: infinite;
+}
+
+@keyframes floating {
+	0% {
+		transform: translateY(0%);	
+	}
+	50% {
+		transform: translateY(8%);	
+	}	
+	100% {
+		transform: translateY(0%);
+	}			
+}
+
+@-webkit-keyframes floating {
+	0% {
+		-webkit-transform: translateY(0%);	
+	}
+	50% {
+		-webkit-transform: translateY(8%);	
+	}	
+	100% {
+		-webkit-transform: translateY(0%);
+	}			
+}
+
+.contact {
+	position: absolute;
+	top: 100%;
+	z-index: -2;
+	margin-left: 0%;
+	width: 100%;
+	height: 60%;
+	min-height: 500px;
+	color: white;
+	//background-color: rgba(74, 139, 135, 0.8);
+	background-color: rgba(0, 0, 0, 0.7);
+	text-decoration: none;
+}
+
+.contactWrapper {
+	position: absolute;
+	top: 5%;
+	z-index: -1;
+	margin-left: 0%;
+	width: 100%;
+	height: 95%;
+	min-height: 500px;
+	color: white;
+	//background-color: rgba(36, 67, 88, 0.8);
+	background-color: rgba(0, 0, 0, 0.6);
+	text-decoration: none;
+}
