@@ -1,0 +1,13 @@
+Creditor
+--------
+1. ownership key (string)
+2. # of months (int)
+3. total cost of ownership (int)
+4. creditor public address (string)
+5. buyer name/id (string/int)
+
+Buyer
+-----
+1. previous transaction hash (string)
+2. transaction index (int)
+3. private key (string)
