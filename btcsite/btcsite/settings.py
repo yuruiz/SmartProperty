@@ -90,7 +90,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-STATICFILES_DIRS = ( 
-    os.path.join(TEMPLATE_DIRS,'static')
+STATICFILES_DIRS = (
+    os.path.join(TEMPLATE_DIRS,'static'),
 #    '/home/elva/Work/btcsite/templates/static/',
 )

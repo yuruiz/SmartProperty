@@ -34,3 +34,16 @@ def forget_password(request):
     return HttpResponse(html)
 #def index_css(request):
 #    return render_to_response('static/css/index.css', locals())
+
+def sample_form(request):
+    now = datetime.datetime.now()
+    t = get_template('v1/sample_form.html')
+    html = t.render(Context({'time': now}))
+    return HttpResponse(html)
+
+def transaction(request):
+    now = datetime.datetime.now()
+    t = get_template('v1/transaction.html')
+    html = t.render(Context({'time': now}))
+    return HttpResponse(html)
+
