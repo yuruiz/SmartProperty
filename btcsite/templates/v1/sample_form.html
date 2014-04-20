@@ -73,9 +73,9 @@ $(document).ready(function () {
 <aside>
   <div class="carousel"> <a class="prev"></a> <a class="next"></a>
     <div class="carousel-container">
-      <h3>Sellor</h3>
+      <h3>Creditor: Create Transaction</h3>
       <div>
-        <form action="/transaction/" method="post">
+        <form action="/status/" method="post">
           <div class="inset">
             <p>
               <label for="ownerkey">Ownership Key</label>
@@ -84,11 +84,23 @@ $(document).ready(function () {
             <p>
               <label for="num_months">Number of Months</label>
               <input type="number" name="num_months" id="num_months">
-			      </p>
-					</div>
-					<p class="p-container">
-					  <input type="submit" name="go" id="go" value="Sign Transaction">
-					</p>
+            </p>
+            <p>
+              <label for="total_value">Total Value</label>
+              <input type="text" name="total_value" id="total_value">
+            </p>
+            <p>
+              <label for="creditor_addr">Public Address</label>
+              <input type="text" name="creditor_addr" id="creditor_addr">
+            </p>
+            <p>
+              <label for="buyer">Buyer Name</label>
+              <input type="text" name="buyer" id="buyer">
+            </p>
+          </div>
+          <p class="p-container">
+            <input type="submit" name="go" id="go" value="Sign Transaction">
+          </p>
         </form>
       </div>
     </div>

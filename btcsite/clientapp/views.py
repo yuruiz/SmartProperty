@@ -41,9 +41,9 @@ def sample_form(request):
     html = t.render(Context({'time': now}))
     return HttpResponse(html)
 
-def transaction(request):
+def status(request):
     now = datetime.datetime.now()
-    t = get_template('v1/transaction.html')
+    t = get_template('v1/status.html')
     html = t.render(Context({'time': now}))
     return HttpResponse(html)
 
