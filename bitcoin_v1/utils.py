@@ -4,6 +4,18 @@ import unittest
 
 b58 = '123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz'
 
+
+
+def long_hex(bytes):
+  return bytes.encode('hex_codec')
+
+def short_hex(bytes):
+  t = bytes.encode('hex_codec')
+  if len(t) < 11:
+    return t
+  return t[0:4]+"..."+t[-4:]
+
+
 # Returns byte string value, not hex string
 def varint(n):
     if n < 0xfd:

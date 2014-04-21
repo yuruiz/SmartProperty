@@ -127,7 +127,7 @@ def buildRawTransaction(transactionInputList, transactionOutputList, hashtype):
             hxTransactionInputListCount.append("%02x" % len(transactionInputList))
         elif hashtype[x] == '81':
             hxTransactionInputListCount.append("%02x" % 1)
-    print hxTransactionInputListCount
+    #print hxTransactionInputListCount
 
     #hxTransactionInputList = "".join(map(buildTransactionInput, transactionInputList))
 

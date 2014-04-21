@@ -4,6 +4,8 @@ import transaction
 import txnUtils
 import configuration
 
+import deserialize
+
 def signedTxnConfig(config):
     
     # Builds signed transaction with specified private key and transaction input and outputs
@@ -44,12 +46,20 @@ def sendTransmission(signedTransaction):
     sock.recv(1000)
 
 
+
+
 # Loading configuration
 transmissionConfig = configuration.config
 signedTxn = signedTxnConfig(transmissionConfig)
 
-transactionHash = txnUtils.getTransactionHash(signedTxn)
+print signedTxn
 
-print (str(signedTxn))
-print (str(transactionHash))
+result = txnUtils.getInputSectionStartByte(signedTxn, 1)
+
+print result
+
+#transactionHash = txnUtils.getTransactionHash(signedTxn)
+
+#print (str(signedTxn))
+#print (str(transactionHash))
 
