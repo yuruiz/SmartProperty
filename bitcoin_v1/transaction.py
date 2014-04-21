@@ -55,7 +55,7 @@ def createScriptPublicKey(publicAddress, ScriptPayload = None):
 
     if ScriptPayload != None:
         assert(len(ScriptPayload)/2 <= 75 )
-        buildScript += ("%02x" % len(ScriptPayload) +
+        buildScript += ("%02x" % len(ScriptPayload)/2 +
                         "%02x" % ScriptPayload +
                         "%02x" % opCodeDefinitions.OP_TRUE)
 
