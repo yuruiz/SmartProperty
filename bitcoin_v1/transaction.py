@@ -39,7 +39,29 @@ def get160BitHashFromPublicAddress(publicAddress):
 # Requires the outgoing public address to create the output script
 
 
-def createScriptPublicKey(publicAddress):
+def createScriptPublicKey(publicAddress, ScriptPayload = None):
+    assert len(publicAddress) == 34
+
+    publicAddress160BitHash = get160BitHashFromPublicAddress(publicAddress)
+
+
+    buildScript = (("%02x" % opCodeDefinitions.OP_DUP) +
+                   ("%02x" % opCodeDefinitions.OP_HASH160) +
+                   ("%02x" % opCodeDefinitions.PUSH_DATA14) +
+                   publicAddress160BitHash +
+                   ("%02x" % opCodeDefinitions.OP_EQUALVERIFY) +
+                   ("%02x" % opCodeDefinitions.OP_CHECKSIG)
+                   )
+
+    if ScriptPayload != None:
+        assert(len(ScriptPayload)/2 <= 75 )
+        buildScript += ("%02x" % len(ScriptPayload)/2 +
+                        "%02x" % ScriptPayload +
+                        "%02x" % opCodeDefinitions.OP_TRUE)
+
+    return buildScript
+
+def createPreviousScriptPublicKey(publicAddress):
     assert len(publicAddress) == 34
 
     publicAddress160BitHash = get160BitHashFromPublicAddress(publicAddress)
@@ -49,14 +71,16 @@ def createScriptPublicKey(publicAddress):
                    ("%02x" % opCodeDefinitions.PUSH_DATA14) +
                    publicAddress160BitHash +
                    ("%02x" % opCodeDefinitions.OP_EQUALVERIFY) +
-                   ("%02x" % opCodeDefinitions.OP_CHECKSIG))
+                   ("%02x" % opCodeDefinitions.OP_CHECKSIG)
+                   )
 
     return buildScript
+
 
 # This can support multiple transaction inputs but signing multiple inputs is not yet supported
 
 
-def buildRawTransaction(transactionInputList, transactionOutputList, hashtype):
+def buildRawTransaction(transactionInputList, transactionOutputList, hashtype, ScriptPayload = None):
 
     def buildTransactionInput(transactionInputList, hashtype):
 
@@ -81,7 +105,7 @@ def buildRawTransaction(transactionInputList, transactionOutputList, hashtype):
 
             reversePreviousTransactionHash.append(previousTransactionHash.decode("hex")[::-1].encode("hex"))
             previousTransactionOutputIndexHex.append(struct.pack('<L', previousTransactionOutputIndex).encode('hex'))
-            scriptSig.append(createScriptPublicKey(previousTransactionOutputPublicAddress))
+            scriptSig.append(createPreviousScriptPublicKey(previousTransactionOutputPublicAddress))
             scriptSigLength.append("%02x" % len(scriptSig[count].decode("hex")))
 
             count += 1
@@ -114,7 +138,7 @@ def buildRawTransaction(transactionInputList, transactionOutputList, hashtype):
         # print transactionInput
         return transactionInput
 
-    def buildTransactionOutput(outputParameters):
+    def buildTransactionOutput(outputParameters, ScriptPayload = None):
 
         (outputSatoshis,
          outputPublicAddress
@@ -122,7 +146,7 @@ def buildRawTransaction(transactionInputList, transactionOutputList, hashtype):
 
         reverseOutputSatoshisHex = struct.pack("<Q", outputSatoshis).encode('hex')
 
-        scriptPublicKey = createScriptPublicKey(outputPublicAddress)
+        scriptPublicKey = createScriptPublicKey(outputPublicAddress, ScriptPayload)
         scriptPublicKeyLength = "%02x" % len(scriptPublicKey.decode("hex"))
 
         transactionOutput = (reverseOutputSatoshisHex +
@@ -173,16 +197,18 @@ def buildRawTransaction(transactionInputList, transactionOutputList, hashtype):
     return transaction
 
 
-def buildSignedTransaction(privateKeyList, transactionInputList, transactionOutputList, hashtype):
+def buildSignedTransaction(privateKeyList, transactionInputList, transactionOutputList, hashtype, ScriptPayload = None):
 
     rawTransactionList = buildRawTransaction(
-        configuration.NEW_TRANSACTION_INPUT, configuration.NEW_TRANSACTION_OUTPUT, hashtype)
+        configuration.NEW_TRANSACTION_INPUT, configuration.NEW_TRANSACTION_OUTPUT, hashtype, ScriptPayload)
 
     def buildScriptSig(privateKey, doubleSHA256_RawTransaction, hashtype):
 
         sk = ecdsa.SigningKey.from_string(privateKey.decode('hex'), curve=ecdsa.SECP256k1)
+
         # 01 is hashtype
         sig = sk.sign_digest(doubleSHA256_RawTransaction, sigencode=ecdsa.util.sigencode_der) + hashtype.decode('hex')
+
         pubKey = publicKey.getECDAPublicKeyWithPrefix(publicKey.BITCOIN_PROTOCOL_PUBLIC_KEY_PREFIX, privateKey)
         scriptSig = utils.varstr(sig).encode('hex') + utils.varstr(pubKey.decode('hex')).encode('hex')
 
@@ -238,7 +264,7 @@ def buildSignedTransaction(privateKeyList, transactionInputList, transactionOutp
     hxTransactionInputListCount = "%02x" % len(transactionInputList)
     hxTransactionInputList = "".join(map(buildTransactionInput, transactionInputList, rawTransactionList, hashtype))
     hxTransactionOutputListCount = "%02x" % len(transactionOutputList)
-    hxTransactionOutputList = "".join(map(buildTransactionOutput, transactionOutputList))
+    hxTransactionOutputList = "".join(map(buildTransactionOutput, transactionOutputList, ScriptPayload))
     hxTransactionBlockLockTime = "00000000"
 
     transaction = (hxTransactionVersion +
