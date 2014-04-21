@@ -97,3 +97,201 @@
 		Main Script Address: 359B4szfSUMSTaBxYo5nAQ79zqjaUtmS53
 		Test Address: miy7SPbChbUK9Wy99GPZZgxYiK3ZsVgJKZ
 
+2014-04-21 00:52:34: 
+	Private Key: 070443d64e44e6f716ff53f048a17080d14c796e67b44d6d4073b16318c766c5
+		Main Address WIF: 5HsNp66CMpiojrYniLnr9XcFPQNmKPo6P3oLGUvoYdL9KTVVDj7
+		Test Address WIF: 91e1Ppujx3nwhv45Lggm28AD34jUUZLHizfHM7HJtN5C6ZfZBYo
+	Bitcoin Public Addresses: 
+		Main PubKey Address: 1GqtmhSuZuHtYERxchuYCJy7ZJBdjqAPaQ
+		Main Script Address: 3HXuhEwM7ocGdQ8Pjoa8cwL3hpUMJLkKTp
+		Test Address: mwMr4kXtNvj9KLuaLGsv2EBSRHnLcYB8Yi
+
+2014-04-21 01:58:55: 
+	Private Key: ed772b2665c29731da0a37bd401c10de7706a1a7a61247b11a16d296099d57d0
+		Main Address WIF: 5KcsKTY5SfPHGL4RgqAXSVK5d5dhrkQeWakpU2P72fzoF1KXQQT
+		Test Address WIF: 93PVuCMd2tTREPZiKB4SK5s3GjzR1uwqrXcmYejcNQjr22GAMRB
+	Bitcoin Public Addresses: 
+		Main PubKey Address: 1EzoWE6zxgNbwXK3UMVWSbdddw8vsU2GSu
+		Main Script Address: 3FgpRmbSWagz2h1UbTA6sDzZnTReNxNdrH
+		Test Address: muWkoHBymhoridnfBvTtGWqxVvjdjfVuZh
+
+2014-04-21 01:59:19: 
+	Private Key: dba7904a6cddbce4972d6b755ce937391fd7dec6adb4dbb2d180ae1630ae84cc
+		Main Address WIF: 5KV2MxEvkN2Y6cJenZSJgDp6AWQAVpeQqYLJWJ3ca2rEYpWkkWC
+		Test Address WIF: 93Fewh4ULb6g4fowQuLDYpN3pAksezBcBVCFavQ7umbHKvXswgw
+	Bitcoin Public Addresses: 
+		Main PubKey Address: 146V5zPmNH3XgekUWRECBmmNKvsWZtM85w
+		Main Script Address: 34nW1XtCvBMumpSudWtncQ8JUTAED8PKTt
+		Test Address: micSP3UkBJUnTmE6DzCa1gyhBvUDXHCaet
+
+2014-04-21 01:59:24: 
+	Private Key: e76b3db11ec04ceaa60be44cf41ac9e1596d2df58ef591825adc0811148f68d4
+		Main Address WIF: 5KaCsEk1osfBkjY1pxK2mbZpk3Fr4jTL6VCC7izznshtk3Byv7S
+		Test Address WIF: 93LqSyZZQ6jKio3JTJCweC7nPhcZDtzXSS49CMMW8cSwX4ueLo2
+	Bitcoin Public Addresses: 
+		Main PubKey Address: 1m27HiGvk1XAfmFC8WuoTRvD2a3xFRB8V
+		Main Script Address: 32T32qCiUeKuFqTgKEBWE5nrMYrma6RZUV
+		Test Address: mgGyQLoFjmSmwnEruhVHdNeF52AkskU5uY
+
+2014-04-21 02:02:10: 
+	Private Key: 67f21a00c4909e45555d0bd6d3fb9588d531c20ca2e71e3251aef5a2ff264ae0
+		Main Address WIF: 5Jc4jbGq8Wqf24fZgy72iXYZoFKw8WksN4wecvvALgUMY4eVJYN
+		Test Address WIF: 92NhKL6Nijunz8ArKJzwb86XSugeHgJ4i1obhZGfgRDQK3CNfC1
+	Bitcoin Public Addresses: 
+		Main PubKey Address: 1xutwuhj2RjtLVmV8seVAvZfgvqy2x2EU
+		Main Script Address: 32evpVQ9Gvk7yWCCcEYEuoHVpDDZb2YiYR
+		Test Address: mgUsBzzgY3rzfSyPChr2K68tXgXYv45FDJ
+
+2014-04-21 02:02:21: 
+	Private Key: 389a6fe77ba10b9b84c813313baf235b84c96f3bc98cf876fac1ac4e05381ddd
+		Main Address WIF: 5JFDSFCc9wYVYe5t3V52vnabifzBDgJtFcsiE6phXKJiGTwowVD
+		Test Address WIF: 921r1z29kAcdWhbAfpxwoP8ZNLLtNqr5bZjfJjBCs43m3XEDHGY
+	Bitcoin Public Addresses: 
+		Main PubKey Address: 1G52XG8TAURETggJJ53Y9bLjvwUGG3p2ae
+		Main Script Address: 3Gm3SoctiNjcYrNjRAi8aDhg5Tkynubn5B
+		Test Address: mvaypKDRyVrVEo9v1e1uyWZ4nw4yAM6RVT
+
+2014-04-21 02:04:38: 
+	Private Key: cbe4528684a32669cfdf9500a58429c3227cc850ce5e3e75c8169a9d0a9569ea
+		Main Address WIF: 5KN5j4epqFpaJqgv22o62iTzvf2Ajb8Ss1RFcecUtWFZANd59wV
+		Test Address WIF: 938iJoUNRUtiGuCCeNgzuK1xaKNstkfeCxHChGxzEEzbwLb2VgR
+	Bitcoin Public Addresses: 
+		Main PubKey Address: 1FUv3ksGVFDm17NU2iDgw5AVErjiSpXAHf
+		Main Script Address: 3GAvyJMi39Y96H4u9otHMhXRPP2S1eja5M
+		Test Address: muzsLoxFJGf1nDr5kHC4kzNp6rLRM44Yjo
+
+2014-04-21 02:06:58: 
+	Private Key: a6de132dcfc918ac11e1fbc35b7c6eae535e1105b484517563f38d2d124284dc
+		Main Address WIF: 5K5mzDdYRQBS9Q2CC4DW5ZHuymWPT3X1urwmugNAMWaRV1WkPCE
+		Test Address WIF: 92rQZxT61dFa7TXUpQ7Qx9qsdRs6cD4DFooizJifhFKUG4gMXSF
+	Bitcoin Public Addresses: 
+		Main PubKey Address: 19SSyX31JWM7q3iJTstDFJejNbmR4Ltizf
+		Main Script Address: 3A8Tu4XSrQfVvDQjayYofw1fX848axaicz
+		Test Address: moxQGa7z7XnNcABvBSrb5Ds4EbN7y4ZV11
+
+2014-04-21 02:07:56: 
+	Private Key: 2dcf762baaf1d92bfbbd87dd7102269e425e94dcddfa1aacdf9f951dc0ecdd6d
+		Main Address WIF: 5JATkFrxThfyJxdkPTDxBK6BAeT1nFJdLXEvDEaUKvLRtQU1XDM
+		Test Address WIF: 91w6KzgW3vk7H2931o7s3ue8pJoiwQqpgU6sHrvyff5UfVySqMc
+	Bitcoin Public Addresses: 
+		Main PubKey Address: 1BmVizQYfhCQwBgem6Y5kWzHcT8Zhcywr4
+		Main Script Address: 3CTWeXtzDbWo2MP5tCCgB9MDkyRHEQCKcp
+		Test Address: mrHT23VXUidfiJAGUfWTaSCcUSjGYUHpwZ
+
+2014-04-21 02:08:13: 
+	Private Key: b9d52d4c5559bb5033155104153c83bc351bb8e1d3eba9ea3ba051f089634ee8
+		Main Address WIF: 5KE8RqNo88m7jBN9oYaMyixXGVe35dVkuj3E2w3TRCYwoWyJQ5d
+		Test Address WIF: 92zm1aCLiMqFhEsSRtUGrKWUv9zkEo2xFfuB7ZPxkwHzaYg1mdc
+	Bitcoin Public Addresses: 
+		Main PubKey Address: 1JLbob6bFMvmAC74MjMJ4FXGMacPAw2zkH
+		Main Script Address: 3K2cj8b2oGF9FMoVUq1tUstCW6u6i4VjBw
+		Test Address: mxrZ6eBa4PN1wJag5JKftAjbDaD61RDFFZ
+
+2014-04-21 02:48:59: 
+	Private Key: 37077d5c7729a53a436c1364b9fef8d4191e29360d376eee185b2cad4a675ede
+		Main Address WIF: 5JEXEJ1p1TeJVJQMagfQ6yoXJVWM9NyEYUzLz1fHCFu5Au5agea
+		Test Address WIF: 9219p2qMbgiSTMueD2ZJyaMUx9s4JYWRtRrJ4e1nXze7wvfFKFc
+	Bitcoin Public Addresses: 
+		Main PubKey Address: 15SJef19bRhoa8S2cAAXAVFH1VaUqkhgGa
+		Main Script Address: 368KaCVb9L2BfJ8TjFq7b7cDA1sCPiPAVu
+		Test Address: mjxFwi68QT94MEueKj8tzQTbsVBBhSsoUK
+
+2014-04-21 02:57:11: 
+	Private Key: e6f0e492ff00d5ea43534bf5e48d84bd12b8cdafe9fc5c4b0e5d48d239a3179e
+		Main Address WIF: 5KZzfBRGZu23ECdbEaqvxm7Qb1BHZGbbX8G5U2mQx4WD9x3euhV
+		Test Address WIF: 93LdEvEpA86BCG8srvjqqMfNEfXziS8ns582Yf7vHoFFvy5ejGZ
+	Bitcoin Public Addresses: 
+		Main PubKey Address: 19FVF3yydht7YuN2dP413XBMdboweuFhyC
+		Main Script Address: 39wWAbURBcCVe54TkUibU9YHn86fDPPX16
+		Test Address: momSY74xSjKNL1qeLx2NsSPgVbQeWh1ftF
+
+2014-04-21 12:35:23: 
+	Private Key: 0cb1b2ee348747c0b50f4d10ff1766c69716fea3fc68f0adf1942b5715a4d1b6
+		Main Address WIF: 5HusqTCBvzGmhfNFs1WKRCjJC38piqvm1fU1VE6cRHBupS7qieP
+		Test Address WIF: 91gWRC1jXDLufisYVMQEHoHFqhVXt1TxMcKxZrT7m1vxbRwtHDB
+	Bitcoin Public Addresses: 
+		Main PubKey Address: 1XANYJuvxi4EQJSDjRoDujZ7cvazWK3ng
+		Main Script Address: 32DBJ5oMUs2SKZzsLq6PeY6VG9DJVDbiXX
+		Test Address: mg37fbPtjz9K1Wn3wJQB3pwsycXHrbRnsM
+
+2014-04-21 12:36:11: 
+	Private Key: 40c0e9dceb54d489ade0e6582114cdbec691bc16b61678bd342fb6217ab34a14
+		Main Address WIF: 5JJodB6WVCAwDg1VZrpdeNgEC7LzSnZm3CDyHBDhLF38D6cdjga
+		Test Address WIF: 925SCuv45RF5BjWnCCiYWyEBqmhhbx6xP95vMoaCfynAz9Vgeox
+	Bitcoin Public Addresses: 
+		Main PubKey Address: 1FRjx1Hf35r66KbeG5MxvEAdVUvmjXHaY8
+		Main Script Address: 3G7ksYn6azAUBVJ5PB2ZLrXZe1DVHqXDxP
+		Test Address: muwhF4Ndr7HLsS5FyeLLk9NxMUXUdyb4rC
+
+2014-04-21 12:38:33: 
+	Private Key: e3e8c85c7a97289107def568ad08bf08249c6a23cb727b2af538a796a5ce3fa1
+		Main Address WIF: 5KYfDeZ9dQD13xMKqCSbceHMzUUty8P1cqVybLgXKxZgVkyfoSe
+		Test Address WIF: 93KHoPNhDdH921rcTYLWVEqKe8qc8HvCxnMvfy32fhJjGjCknCy
+	Bitcoin Public Addresses: 
+		Main PubKey Address: 1EB6KZvkK7ds68zBJu1nT6vsG2yhDDqKwD
+		Main Script Address: 3Es7F7RBs1xFBJgcRzgNsjHoQZGQiTVwd4
+		Test Address: mth3cd1j8957sFTo2TzAH29C82aQ9NezkN
+
+2014-04-21 12:41:08: 
+	Private Key: 76c6be4eadb4188d481378b61247e5991748fe149c7102ea557512d0c1691760
+		Main Address WIF: 5JibZef2y4cPTuLKr3K3NcZxgQeccXG4Lea2YiuPGFMJB7JceP9
+		Test Address WIF: 92VE9PUaZHgXRxqcUPCxFD7vL51KmgoFgbRydMFtbz6Lx65fB2y
+	Bitcoin Public Addresses: 
+		Main PubKey Address: 1AvEeWfwkHVhuCSau2HERWmirue6ybB3Wt
+		Main Script Address: 3BcFa4APJBp5zN9227wpr98f1RvpV2HeUL
+		Test Address: mqSBwZkvZJvxgJvCcbFcFRz3iuEouHE3Ub
+
+2014-04-21 12:43:11: 
+	Private Key: 72d04baf6c740e6901ca63b8ebbc8773a952e1686a1b059ceb26f9413cb51e55
+		Main Address WIF: 5JgrLoWAUPM46N6cNYyimVZeNF9PqwLLvkKMejSSyvDTxA31KvD
+		Test Address WIF: 92TUvYKi4cRC4Rbtztsde67c1uW716sYGhBJjMnxKexWjE44s2M
+	Bitcoin Public Addresses: 
+		Main PubKey Address: 1Pwik7MuM9XTR9sSpqjPCo2HaoqJF3X7ai
+		Main Script Address: 3QdjferLu3qqWKZswwPydRPDjL81shL7Ac
+		Test Address: n4Tg3AStAAxiCGM4YQhm2iEcSoS1C9ZiJp
+
+2014-04-21 12:43:49: 
+	Private Key: 21358f2516383b5bfc4f4ba3bf7c729d1dc208de80d1e680e225204a252789e9
+		Main Address WIF: 5J4usCeL1gJtUbbbe15y5stnHRq733saCocG7aXS6wkfjok443a
+		Test Address WIF: 91qYSwTsbuP2Sf6tGLysxUSjw6BpCDQmYkUDCCswSgViWp8c2Dw
+	Bitcoin Public Addresses: 
+		Main PubKey Address: 1MgUBzoas7myD9ZwHiYQQARDqdrf2W8mJm
+		Main Script Address: 3NNV7YJ2R26MJKGNQpCzpnn9zA9NciwqD8
+		Test Address: n2CRV3tZg9DDzG3Z1HWnE5dYhdTMxzVuEN
+
+2014-04-21 12:44:14: 
+	Private Key: bf6130cf89519ce56950f10ff6adc12200515dd9646086158cd8d34928c3fe9a
+		Main Address WIF: 5KGa7nexoaVFAV4kg1rmHirSmwy3zZKKYJVqvPR84VM9me6Z9SZ
+		Test Address WIF: 933ChXUWPoZP8Ya3JMkgAKQQRcKm9irWtFMo11mdQE6CYg9q8Tv
+	Bitcoin Public Addresses: 
+		Main PubKey Address: 1NkowVGhr26AgPSBzYiZnzPm1nMatjZ41d
+		Main Script Address: 3PSps2m9PvQYmZ8d7ePADckhAJeJRqLPSC
+		Test Address: n3GmEYMgf3XRTVuoi7gwcuc5smxHmMrDiB
+
+2014-04-21 12:45:31: 
+	Private Key: 7bf48fc4559a8cb9a3eaab63185be71bb5ce591b916e4ccb6b0df6a1eb2206f3
+		Main Address WIF: 5JksrUJV7X769pfZXyQDynHxc17JWk5Vsstc5nZXhCQ8wLsJEN4
+		Test Address WIF: 92XWSD82hkBE7tArAKJ8rNqvFfU1fuchDpkZAQv32w9BiKCwXco
+	Bitcoin Public Addresses: 
+		Main PubKey Address: 1B9A9XrqN8wttqy1X1bpC3cA3rBEKwoFaY
+		Main Script Address: 3BqB55MGv3GGz1fSe7GQcfy6CNTwsexGwZ
+		Test Address: mqf7SawpBAP9fxSdEaaC1xpUuqmwJ3prnJ
+
+2014-04-21 12:45:47: 
+	Private Key: 53f69d8c1d8f784e1eaa16462e0037a476b20ae0d08b080bb52eeacc549fc918
+		Main Address WIF: 5JTGK566JzJxtSfWDjoKdxYBYKEvN9duGfP1e7sYXN7tMjgBTbA
+		Test Address WIF: 92DttouduDP6rWAnr5hEWZ69BybdXKB6ccExikE3s6rw8m45B8q
+	Bitcoin Public Addresses: 
+		Main PubKey Address: 1MwCP6Gakmqp2zptUcCb6tvFzx9xFfJ7be
+		Main Script Address: 3NdDJdm2JgAC8AXKbhsBXXHC9USfr7UtAb
+		Test Address: n2T9g9MZZoH4p7JWCBAxvp8arwkfFTrcnJ
+
+2014-04-21 12:46:09: 
+	Private Key: 1636d94cb069ce34a0a113564c6565e9c1ab8249e22374a228b0e6e00f41b2ea
+		Main Address WIF: 5Hz51p2182brMmWFsXJLJJgyWML92UMtkVhpLuGUdSUWeWhNueF
+		Test Address WIF: 91khbYqYiFfzKq1YVsCFAuEwA1grBdu66SZmRXcyyBDZRWUcWPV
+	Bitcoin Public Addresses: 
+		Main PubKey Address: 14jq9m92d86zLhH21LjH6CJtQy7nmCjAap
+		Main Script Address: 35Rr5JdUB2RNRryT8SPsWpfpZVQWHYTE2C
+		Test Address: mjFnSpE1S9YF7okdiuhev7XDGxiViG1fqN
+

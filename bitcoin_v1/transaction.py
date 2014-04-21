@@ -8,42 +8,13 @@ import publicKey
 import opCodeDefinitions
 import configuration
 
-# Four-Byte Checksum Length
-CHECKSUM_BYTE_LENGTH = 4
-CHECKSUM_LENGTH = CHECKSUM_BYTE_LENGTH * 2
-
-
-# Returns the Public Key Hash <=> Same as the RIPEMD160
-def get160BitHashFromPublicAddress(publicAddress):
-
-    # Obtains the Hash of the Public Address
-    leadingOnes = utils.countLeadingChars(publicAddress, '1')
-    addressWithChecksum = utils.base256encode(utils.base58decode(publicAddress))
-    addressWithLeadingZeros = '\0' * leadingOnes + addressWithChecksum[:-CHECKSUM_BYTE_LENGTH]
-    publicAddress160BitHash = addressWithLeadingZeros[1:].encode("hex")
-
-    # Parses the Public Address for Checksum
-    providedChecksum = addressWithChecksum[-CHECKSUM_BYTE_LENGTH:].encode("hex")
-
-    # Calculates the Checksum based on Parsed Address
-    oneSHA256MainAddress = SHA256.new(addressWithLeadingZeros)
-    twoSHA256MainAddress = SHA256.new(oneSHA256MainAddress.digest()).hexdigest()
-    calculatedChecksum = twoSHA256MainAddress[0:CHECKSUM_LENGTH]
-
-    # Checks to make sure the checksum provided matches the calculated checksum
-    #    of the 160bit of the public address
-    assert providedChecksum == calculatedChecksum
-
-    return publicAddress160BitHash
-
-# Requires the outgoing public address to create the output script
-
+import keyUtils
 
 def createScriptPublicKey(publicAddress, ScriptPayload = None):
     assert len(publicAddress) == 34
 
-    publicAddress160BitHash = get160BitHashFromPublicAddress(publicAddress)
 
+    publicAddress160BitHash = keyUtils.get160BitHashFromPublicAddress(publicAddress)
 
     buildScript = (("%02x" % opCodeDefinitions.OP_DUP) +
                    ("%02x" % opCodeDefinitions.OP_HASH160) +
@@ -52,19 +23,19 @@ def createScriptPublicKey(publicAddress, ScriptPayload = None):
                    ("%02x" % opCodeDefinitions.OP_EQUALVERIFY) +
                    ("%02x" % opCodeDefinitions.OP_CHECKSIG)
                    )
-
+    
     if ScriptPayload != None:
         assert(len(ScriptPayload)/2 <= 75 )
         buildScript += ("%02x" % len(ScriptPayload)/2 +
                         "%02x" % ScriptPayload +
                         "%02x" % opCodeDefinitions.OP_TRUE)
-
+    
     return buildScript
 
 def createPreviousScriptPublicKey(publicAddress):
     assert len(publicAddress) == 34
 
-    publicAddress160BitHash = get160BitHashFromPublicAddress(publicAddress)
+    publicAddress160BitHash = keyUtils.get160BitHashFromPublicAddress(publicAddress)
 
     buildScript = (("%02x" % opCodeDefinitions.OP_DUP) +
                    ("%02x" % opCodeDefinitions.OP_HASH160) +
@@ -78,7 +49,6 @@ def createPreviousScriptPublicKey(publicAddress):
 
 
 # This can support multiple transaction inputs but signing multiple inputs is not yet supported
-
 
 def buildRawTransaction(transactionInputList, transactionOutputList, hashtype, ScriptPayload = None):
 
@@ -199,8 +169,9 @@ def buildRawTransaction(transactionInputList, transactionOutputList, hashtype, S
 
 def buildSignedTransaction(privateKeyList, transactionInputList, transactionOutputList, hashtype, ScriptPayload = None):
 
-    rawTransactionList = buildRawTransaction(
-        configuration.NEW_TRANSACTION_INPUT, configuration.NEW_TRANSACTION_OUTPUT, hashtype, ScriptPayload)
+    rawTransactionList = buildRawTransaction(configuration.config.inputTransactionList, 
+                                             configuration.config.outputTransactionList, 
+                                             hashtype)
 
     def buildScriptSig(privateKey, doubleSHA256_RawTransaction, hashtype):
 
