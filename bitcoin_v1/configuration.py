@@ -1,4 +1,5 @@
 import configUtils, web_Creditor_BuildInitalTransactions
+import _tempConfig
 
 # Main Network Magic Value
 MAIN_NETWORK_MAGIC = 0xD9B4BEF9
@@ -36,5 +37,6 @@ else:
     NETWORK_ADDRESS = TESTNET3_PEER_HOST_IP
 
 # Using web Creditor Building Transactions Config
-config = web_Creditor_BuildInitalTransactions.config
+#config = web_Creditor_BuildInitalTransactions.config
 
+config = _tempConfig.config

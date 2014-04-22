@@ -13,7 +13,6 @@ import keyUtils
 def createScriptPublicKey(publicAddress, ScriptPayload = None):
     assert len(publicAddress) == 34
 
-
     publicAddress160BitHash = keyUtils.get160BitHashFromPublicAddress(publicAddress)
 
     buildScript = (("%02x" % opCodeDefinitions.OP_DUP) +
@@ -214,7 +213,7 @@ def buildSignedTransaction(privateKeyList, transactionInputList, transactionOutp
         # print transactionInput
         return transactionInput
 
-    def buildTransactionOutput(outputParameters):
+    def buildTransactionOutput(outputParameters, ScriptPayload = None):
 
         (outputSatoshis,
          outputPublicAddress
@@ -235,8 +234,12 @@ def buildSignedTransaction(privateKeyList, transactionInputList, transactionOutp
     hxTransactionInputListCount = "%02x" % len(transactionInputList)
     hxTransactionInputList = "".join(map(buildTransactionInput, transactionInputList, rawTransactionList, hashtype))
     hxTransactionOutputListCount = "%02x" % len(transactionOutputList)
-    hxTransactionOutputList = "".join(map(buildTransactionOutput, transactionOutputList, ScriptPayload))
-    hxTransactionBlockLockTime = "00000000"
+    if ScriptPayload == None:
+        hxTransactionOutputList = "".join(map(buildTransactionOutput, transactionOutputList))
+        hxTransactionBlockLockTime = "00000000"
+    else:
+        hxTransactionOutputList = "".join(map(buildTransactionOutput, transactionOutputList, ScriptPayload))
+        hxTransactionBlockLockTime = "00000000"        
 
     transaction = (hxTransactionVersion +
                    hxTransactionInputListCount +

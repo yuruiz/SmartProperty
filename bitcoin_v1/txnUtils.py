@@ -38,112 +38,264 @@ def getInputCount(transaction):
 
 def getInputSectionStartByte(transaction, inputIndexOffset):
     
+    startingInputSectionOffsetByte = 0
+    startingPrevOutputHashOffsetByte = 0
+    startingPrevOutputHashIndexOffsetByte = 0
+    startingInputScriptLengthOffsetByte = 0
+    startingInputScriptOffsetByte = 0
+    startingInputSequenceOffsetByte = 0
+
     for x in xrange(0, inputIndexOffset + 1):
     
-        startingInputSectionOffsetByte = 6
-    
-        if inputIndexOffset == 0:
+        if x == 0:
             startingInputSectionOffsetByte = 6
         else:
-            startingInputSectionOffsetByte = 6
-            
+            # Previous Transaction Hash
             startingPrevOutputHashOffsetByte = startingInputSectionOffsetByte
             prevOutputHashSizeByte = 32
+            
+            # Previous Transaction Hash Index
             startingPrevOutputHashIndexOffsetByte = startingPrevOutputHashOffsetByte + prevOutputHashSizeByte
             prevOutputHashIndexSizeByte = 4
             
+            # Input Script Length
             startingInputScriptLengthOffsetByte = startingPrevOutputHashIndexOffsetByte + prevOutputHashIndexSizeByte
             inputScriptLengthSizeByte =1
             inputScriptLengthOffset = (startingInputScriptLengthOffsetByte - 1) * 2
             inputScriptLengthOffsetSize = inputScriptLengthSizeByte * 2
             inputScriptLength = transaction[inputScriptLengthOffset : inputScriptLengthOffset + inputScriptLengthOffsetSize]
             
-            print inputScriptLength
-            
             # Input ScriptSig 
             startingInputScriptOffsetByte = startingInputScriptLengthOffsetByte + inputScriptLengthSizeByte
             inputScriptSizeByte = getInputScriptSizeByte(inputScriptLength)
             
+            # Input Sequence 
             startingInputSequenceOffsetByte = startingInputScriptOffsetByte + inputScriptSizeByte
             inputSequenceSizeByte = 4
             
-            startingInputSectionOffsetByte += (startingInputSequenceOffsetByte + inputSequenceSizeByte)
-        
+            startingInputSectionOffsetByte = (startingInputSequenceOffsetByte + inputSequenceSizeByte)
             
+            #print "startingInputSectionOffsetByte Start: " + str(startingInputSequenceOffsetByte + inputSequenceSizeByte)
 
     return startingInputSectionOffsetByte
 
-def getInputSection(transaction, inputCount=None, inputIndexOffset=None):
+def getInputSectionAll(transaction):
 
-    '''
-    if inputCount:
-        for input in xrange(0, inputCount):
+    inputCount = int(getInputCount(transaction), 16)
+    
+    print inputCount
+    
+    startingInputSectionOffsetByte = 0
+    startingPrevOutputHashOffsetByte = 0
+    startingPrevOutputHashIndexOffsetByte = 0
+    startingInputScriptLengthOffsetByte = 0
+    startingInputScriptOffsetByte = 0
+    startingInputSequenceOffsetByte = 0
+
+    transactionInputList = []
+
+    for x in xrange(0, inputCount):
+    
+        if x == 0:
+            startingInputSectionOffsetByte = 6
+            # Previous Transaction Hash
+            startingPrevOutputHashOffsetByte = startingInputSectionOffsetByte
+            prevOutputHashSizeByte = 32
+            prevOutputHashOffset = (startingPrevOutputHashOffsetByte - 1) * 2
+            prevOutputHashOffsetSize = prevOutputHashSizeByte * 2
+            prevOutputHash = transaction[prevOutputHashOffset : prevOutputHashOffset + prevOutputHashOffsetSize]
             
-    '''
-     
-    startingInputSectionOffsetByte = 6
-    
-    # Previous Transaction Hash
-    startingPrevOutputHashOffsetByte = startingInputSectionOffsetByte
-    prevOutputHashSizeByte = 32
-    prevOutputHashOffset = (startingPrevOutputHashOffsetByte - 1) * 2
-    prevOutputHashOffsetSize = prevOutputHashSizeByte * 2
-    prevOutputHash = transaction[prevOutputHashOffset : prevOutputHashOffset + prevOutputHashOffsetSize]
-    
-    # Previous Transaction Hash Index
-    startingPrevOutputHashIndexOffsetByte = startingPrevOutputHashOffsetByte + prevOutputHashSizeByte
-    prevOutputHashIndexSizeByte = 4
-    prevOutputHashIndexOffset = (startingPrevOutputHashIndexOffsetByte - 1) * 2
-    prevOutputHashIndexOffsetSize = prevOutputHashIndexSizeByte * 2
-    prevOutputHashIndex = transaction[prevOutputHashIndexOffset : prevOutputHashIndexOffset + prevOutputHashIndexOffsetSize]
-    
-    # Input Script Length
-    startingInputScriptLengthOffsetByte = startingPrevOutputHashIndexOffsetByte + prevOutputHashIndexSizeByte
-    inputScriptLengthSizeByte =1
-    inputScriptLengthOffset = (startingInputScriptLengthOffsetByte - 1) * 2
-    inputScriptLengthOffsetSize = inputScriptLengthSizeByte * 2
-    inputScriptLength = transaction[inputScriptLengthOffset : inputScriptLengthOffset + inputScriptLengthOffsetSize]
-    
-    # Input ScriptSig 
-    startingInputScriptOffsetByte = startingInputScriptLengthOffsetByte + inputScriptLengthSizeByte
-    inputScriptSizeByte = getInputScriptSizeByte(inputScriptLength)
-    inputScriptOffset = (startingInputScriptOffsetByte - 1) * 2
-    inputScriptOffsetSize = inputScriptSizeByte * 2        
-    inputScript = transaction[inputScriptOffset : inputScriptOffset + inputScriptOffsetSize]
-                              
-    # Input Sequence 
-    startingInputSequenceOffsetByte = startingInputScriptOffsetByte + inputScriptSizeByte
-    inputSequenceSizeByte = 4
-    inputSequenceOffset = (startingInputSequenceOffsetByte - 1) * 2
-    inputSequenceOffsetSize = inputSequenceSizeByte * 2        
-    inputSequence = transaction[inputSequenceOffset : inputSequenceOffset + inputSequenceOffsetSize]
-    
-    
-    startingInputSectionOffsetByte = startingInputSequenceOffsetByte + inputSequenceSizeByte   
+            # Previous Transaction Hash Index
+            startingPrevOutputHashIndexOffsetByte = startingPrevOutputHashOffsetByte + prevOutputHashSizeByte
+            prevOutputHashIndexSizeByte = 4
+            prevOutputHashIndexOffset = (startingPrevOutputHashIndexOffsetByte - 1) * 2
+            prevOutputHashIndexOffsetSize = prevOutputHashIndexSizeByte * 2
+            prevOutputHashIndex = transaction[prevOutputHashIndexOffset : prevOutputHashIndexOffset + prevOutputHashIndexOffsetSize]
+            
+            # Input Script Length
+            startingInputScriptLengthOffsetByte = startingPrevOutputHashIndexOffsetByte + prevOutputHashIndexSizeByte
+            inputScriptLengthSizeByte = 1
+            inputScriptLengthOffset = (startingInputScriptLengthOffsetByte - 1) * 2
+            inputScriptLengthOffsetSize = inputScriptLengthSizeByte * 2
+            inputScriptLength = transaction[inputScriptLengthOffset : inputScriptLengthOffset + inputScriptLengthOffsetSize]
+            
+            # Input ScriptSig 
+            startingInputScriptOffsetByte = startingInputScriptLengthOffsetByte + inputScriptLengthSizeByte
+            inputScriptSizeByte = getInputScriptSizeByte(inputScriptLength)
+            inputScriptOffset = (startingInputScriptOffsetByte - 1) * 2
+            inputScriptOffsetSize = inputScriptSizeByte * 2        
+            inputScript = transaction[inputScriptOffset : inputScriptOffset + inputScriptOffsetSize]
+                                      
+            # Input Sequence 
+            startingInputSequenceOffsetByte = startingInputScriptOffsetByte + inputScriptSizeByte
+            inputSequenceSizeByte = 4
+            inputSequenceOffset = (startingInputSequenceOffsetByte - 1) * 2
+            inputSequenceOffsetSize = inputSequenceSizeByte * 2        
+            inputSequence = transaction[inputSequenceOffset : inputSequenceOffset + inputSequenceOffsetSize]
+            
+            transactionInput = (prevOutputHash + 
+                                prevOutputHashIndex +
+                                inputScriptLength + 
+                                inputScript + 
+                                inputSequence)
+                                
+            transactionInputList.append(transactionInput)
+            startingInputSectionOffsetByte = startingInputSequenceOffsetByte + inputSequenceSizeByte
+            
+        else:
+            # Previous Transaction Hash
+            startingPrevOutputHashOffsetByte = startingInputSectionOffsetByte
+            prevOutputHashSizeByte = 32
+            prevOutputHashOffset = (startingPrevOutputHashOffsetByte - 1) * 2
+            prevOutputHashOffsetSize = prevOutputHashSizeByte * 2
+            prevOutputHash = transaction[prevOutputHashOffset : prevOutputHashOffset + prevOutputHashOffsetSize]
+            
+            # Previous Transaction Hash Index
+            startingPrevOutputHashIndexOffsetByte = startingPrevOutputHashOffsetByte + prevOutputHashSizeByte
+            prevOutputHashIndexSizeByte = 4
+            prevOutputHashIndexOffset = (startingPrevOutputHashIndexOffsetByte - 1) * 2
+            prevOutputHashIndexOffsetSize = prevOutputHashIndexSizeByte * 2
+            prevOutputHashIndex = transaction[prevOutputHashIndexOffset : prevOutputHashIndexOffset + prevOutputHashIndexOffsetSize]
+            
+            # Input Script Length
+            startingInputScriptLengthOffsetByte = startingPrevOutputHashIndexOffsetByte + prevOutputHashIndexSizeByte
+            inputScriptLengthSizeByte = 1
+            inputScriptLengthOffset = (startingInputScriptLengthOffsetByte - 1) * 2
+            inputScriptLengthOffsetSize = inputScriptLengthSizeByte * 2
+            inputScriptLength = transaction[inputScriptLengthOffset : inputScriptLengthOffset + inputScriptLengthOffsetSize]
+            
+            # Input ScriptSig 
+            startingInputScriptOffsetByte = startingInputScriptLengthOffsetByte + inputScriptLengthSizeByte
+            inputScriptSizeByte = getInputScriptSizeByte(inputScriptLength)
+            inputScriptOffset = (startingInputScriptOffsetByte - 1) * 2
+            inputScriptOffsetSize = inputScriptSizeByte * 2        
+            inputScript = transaction[inputScriptOffset : inputScriptOffset + inputScriptOffsetSize]
+            
+            # Input Sequence 
+            startingInputSequenceOffsetByte = startingInputScriptOffsetByte + inputScriptSizeByte
+            inputSequenceSizeByte = 4
+            inputSequenceOffset = (startingInputSequenceOffsetByte - 1) * 2
+            inputSequenceOffsetSize = inputSequenceSizeByte * 2        
+            inputSequence = transaction[inputSequenceOffset : inputSequenceOffset + inputSequenceOffsetSize]
+            
+            transactionInput = (prevOutputHash + 
+                                prevOutputHashIndex +
+                                inputScriptLength + 
+                                inputScript + 
+                                inputSequence)
+                                
+            transactionInputList.append(transactionInput)
+            startingInputSectionOffsetByte = (startingInputSequenceOffsetByte + inputSequenceSizeByte)
 
+    return transactionInputList
     
-    return startingInputSectionOffsetByte
+def getInputSection(transaction, inputIndex):
+
+    inputCount = int(getInputCount(transaction), 16)
+    print inputCount
     
-    '''
+    if inputCount <= inputIndex:
+        return "Input Index Error"
     
+    startingInputSectionOffsetByte = 0
+    startingPrevOutputHashOffsetByte = 0
+    startingPrevOutputHashIndexOffsetByte = 0
+    startingInputScriptLengthOffsetByte = 0
+    startingInputScriptOffsetByte = 0
+    startingInputSequenceOffsetByte = 0
+
+    transactionInputSection = []
+
+    for x in xrange(0, inputIndex + 1):
     
-    inputScriptLengthSizeByte = 1
-    
-    
-    inputSectionSizeByte = (prevOutputHashSizeByte + 
-                            prevOutputHashIndexSizeByte +
-                            inputScriptLengthSizeByte +
-                            sequenceSizeByte)
-    
-    startingInputSectionOffset = (startingInputSectionOffsetByte - 1) * 2
-    
-    scriptSize = 
-    
-    inputSectionSize = inputSectionSizeByte * 2 
-    
-    for 
-    
-    '''
-    
-    
+        if x == 0:
+            startingInputSectionOffsetByte = 6
+            # Previous Transaction Hash
+            startingPrevOutputHashOffsetByte = startingInputSectionOffsetByte
+            prevOutputHashSizeByte = 32
+            prevOutputHashOffset = (startingPrevOutputHashOffsetByte - 1) * 2
+            prevOutputHashOffsetSize = prevOutputHashSizeByte * 2
+            prevOutputHash = transaction[prevOutputHashOffset : prevOutputHashOffset + prevOutputHashOffsetSize]
+            
+            # Previous Transaction Hash Index
+            startingPrevOutputHashIndexOffsetByte = startingPrevOutputHashOffsetByte + prevOutputHashSizeByte
+            prevOutputHashIndexSizeByte = 4
+            prevOutputHashIndexOffset = (startingPrevOutputHashIndexOffsetByte - 1) * 2
+            prevOutputHashIndexOffsetSize = prevOutputHashIndexSizeByte * 2
+            prevOutputHashIndex = transaction[prevOutputHashIndexOffset : prevOutputHashIndexOffset + prevOutputHashIndexOffsetSize]
+            
+            # Input Script Length
+            startingInputScriptLengthOffsetByte = startingPrevOutputHashIndexOffsetByte + prevOutputHashIndexSizeByte
+            inputScriptLengthSizeByte = 1
+            inputScriptLengthOffset = (startingInputScriptLengthOffsetByte - 1) * 2
+            inputScriptLengthOffsetSize = inputScriptLengthSizeByte * 2
+            inputScriptLength = transaction[inputScriptLengthOffset : inputScriptLengthOffset + inputScriptLengthOffsetSize]
+            
+            # Input ScriptSig 
+            startingInputScriptOffsetByte = startingInputScriptLengthOffsetByte + inputScriptLengthSizeByte
+            inputScriptSizeByte = getInputScriptSizeByte(inputScriptLength)
+            inputScriptOffset = (startingInputScriptOffsetByte - 1) * 2
+            inputScriptOffsetSize = inputScriptSizeByte * 2        
+            inputScript = transaction[inputScriptOffset : inputScriptOffset + inputScriptOffsetSize]
+                                      
+            # Input Sequence 
+            startingInputSequenceOffsetByte = startingInputScriptOffsetByte + inputScriptSizeByte
+            inputSequenceSizeByte = 4
+            inputSequenceOffset = (startingInputSequenceOffsetByte - 1) * 2
+            inputSequenceOffsetSize = inputSequenceSizeByte * 2        
+            inputSequence = transaction[inputSequenceOffset : inputSequenceOffset + inputSequenceOffsetSize]
+            
+            transactionInputSection = (prevOutputHash + 
+                                       prevOutputHashIndex +
+                                       inputScriptLength + 
+                                       inputScript + 
+                                       inputSequence)
+            
+            startingInputSectionOffsetByte = startingInputSequenceOffsetByte + inputSequenceSizeByte
+            
+        else:
+            # Previous Transaction Hash
+            startingPrevOutputHashOffsetByte = startingInputSectionOffsetByte
+            prevOutputHashSizeByte = 32
+            prevOutputHashOffset = (startingPrevOutputHashOffsetByte - 1) * 2
+            prevOutputHashOffsetSize = prevOutputHashSizeByte * 2
+            prevOutputHash = transaction[prevOutputHashOffset : prevOutputHashOffset + prevOutputHashOffsetSize]
+            
+            # Previous Transaction Hash Index
+            startingPrevOutputHashIndexOffsetByte = startingPrevOutputHashOffsetByte + prevOutputHashSizeByte
+            prevOutputHashIndexSizeByte = 4
+            prevOutputHashIndexOffset = (startingPrevOutputHashIndexOffsetByte - 1) * 2
+            prevOutputHashIndexOffsetSize = prevOutputHashIndexSizeByte * 2
+            prevOutputHashIndex = transaction[prevOutputHashIndexOffset : prevOutputHashIndexOffset + prevOutputHashIndexOffsetSize]
+            
+            # Input Script Length
+            startingInputScriptLengthOffsetByte = startingPrevOutputHashIndexOffsetByte + prevOutputHashIndexSizeByte
+            inputScriptLengthSizeByte = 1
+            inputScriptLengthOffset = (startingInputScriptLengthOffsetByte - 1) * 2
+            inputScriptLengthOffsetSize = inputScriptLengthSizeByte * 2
+            inputScriptLength = transaction[inputScriptLengthOffset : inputScriptLengthOffset + inputScriptLengthOffsetSize]
+            
+            # Input ScriptSig 
+            startingInputScriptOffsetByte = startingInputScriptLengthOffsetByte + inputScriptLengthSizeByte
+            inputScriptSizeByte = getInputScriptSizeByte(inputScriptLength)
+            inputScriptOffset = (startingInputScriptOffsetByte - 1) * 2
+            inputScriptOffsetSize = inputScriptSizeByte * 2        
+            inputScript = transaction[inputScriptOffset : inputScriptOffset + inputScriptOffsetSize]
+            
+            # Input Sequence 
+            startingInputSequenceOffsetByte = startingInputScriptOffsetByte + inputScriptSizeByte
+            inputSequenceSizeByte = 4
+            inputSequenceOffset = (startingInputSequenceOffsetByte - 1) * 2
+            inputSequenceOffsetSize = inputSequenceSizeByte * 2        
+            inputSequence = transaction[inputSequenceOffset : inputSequenceOffset + inputSequenceOffsetSize]
+            
+            transactionInputSection = (prevOutputHash + 
+                                       prevOutputHashIndex +
+                                       inputScriptLength + 
+                                       inputScript + 
+                                       inputSequence)
+            
+            startingInputSectionOffsetByte = (startingInputSequenceOffsetByte + inputSequenceSizeByte)
+
+    return transactionInputSection
     

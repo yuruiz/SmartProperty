@@ -26,6 +26,7 @@ class TransactionConfiguration(object):
         
         return previousTransactionsHashList
     
+    
     def getPreviousTransactionsHashIndexList(self):
         
         previousTransactionsHashIndexList = []
@@ -33,3 +34,9 @@ class TransactionConfiguration(object):
             previousTransactionsHashIndexList.append(inputTransaction[PREV_TRANSACTION_HASH_LIST_OFFSET])
         
         return previousTransactionsHashIndexList
+    
+    def getOutputTransactionsCount(self):
+        
+        count = len(self.outputTransactionList)
+        
+        return count
