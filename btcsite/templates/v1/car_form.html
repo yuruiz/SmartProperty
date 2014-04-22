@@ -73,7 +73,28 @@ $(document).ready(function () {
 <aside>
   <div class="carousel"> <a class="prev"></a> <a class="next"></a>
     <div class="carousel-container">
-      <h6>Your transaction has been succesfully created. Thanks!</h2>
+      <h3>Track Transaction Status</h3>
+      <div>
+        <form action="/carStatus/" method="get">
+          <div class="inset">
+            <p>
+              <label for="tx">Transaction</label>
+              <input type="text" name="tx" id="tx" size="60">
+            </p>
+            <p>
+              <input type="radio" name="type" id="info" value="info" checked>
+              <label for="info">Info</label>
+            </p>
+            <p>
+              <input type="radio" name="type" id="raw" value="raw" >
+              <label for="raw">Raw</label>
+            </p>
+          </div>
+          <p class="p-container">
+            <input type="submit" name="go" id="go" value="Get Transaction">
+          </p>
+        </form>
+      </div>
     </div>
   </div>
 </aside>

@@ -4,7 +4,7 @@ import os
 import sys
 
 servAddr = "blockr.io"
-transaction = "60c1f1a3160042152114e2bba45600a5045711c3a8a458016248acec59653471"
+#transaction = "60c1f1a3160042152114e2bba45600a5045711c3a8a458016248acec59653471"
 
 def printText(txt):
     lines = txt.split('\n')
@@ -28,13 +28,12 @@ def getResponse(httpServ):
 def disconnectServer(httpServ):
   httpServ.close()
 
-def test():
+def get_tx(tx, returnType):
   httpServ = connectServer(servAddr)
-  sendRequest(httpServ, transaction, "info")
-  #sendRequest(httpServ, transaction, "raw")
+  sendRequest(httpServ, tx, returnType)
   response = getResponse(httpServ)
-  print "Output from HTML request"
-  printText(response)
+  #print "Output from HTML request"
+  #printText(response)
   responseJson = json.loads(response)
   disconnectServer(httpServ)
   return responseJson
