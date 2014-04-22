@@ -3,27 +3,21 @@ import json
 import os
 import sys
 
-servAddr = "blockchain.info"
-servPort = 80
-btcAddr = "1GyBNq4bjH9PwYtUwJS7HfcA7msk6Pbbx"
-hash160 = "0305229d543e09c2ae9fc224e64287b1d499bcd6"
+servAddr = "blockr.io"
+transaction = "60c1f1a3160042152114e2bba45600a5045711c3a8a458016248acec59653471"
 
 def printText(txt):
     lines = txt.split('\n')
     for line in lines:
         print line.strip()
 
-def connectServer(servAddr, servPort):
-  httpServ = httplib.HTTPConnection(servAddr, servPort)
+def connectServer(servAddr):
+  httpServ = httplib.HTTPConnection(servAddr)
   httpServ.connect()
   return httpServ
 
-def sendRequest(httpServ, btcAddr, addrType):
-  requestURL = "/"
-  if addrType == "hash160" or addrType == "address":
-    requestURL += "address/" + btcAddr + "?format=json"
-  if addrType == "raw":
-    requestURL += "rawaddr/" + btcAddr
+def sendRequest(httpServ, transaction, returnType):
+  requestURL = "/api/v1/tx/" + returnType + "/" + transaction
   httpServ.request('GET', requestURL)
 
 def getResponse(httpServ):
@@ -35,10 +29,9 @@ def disconnectServer(httpServ):
   httpServ.close()
 
 def test():
-  httpServ = connectServer(servAddr, servPort)
-  sendRequest(httpServ, hash160, "hash160")
-  #sendRequest(httpServ, btcAddr, "address")
-  #sendRequest(httpServ, btcAddr, "raw")
+  httpServ = connectServer(servAddr)
+  sendRequest(httpServ, transaction, "info")
+  #sendRequest(httpServ, transaction, "raw")
   response = getResponse(httpServ)
   print "Output from HTML request"
   printText(response)
@@ -56,7 +49,6 @@ if __name__ == "__main__":
 
     # Example: get a specific transaction's output
     print "Result:"
-    print responseJson[u'txs'][0][u'out']
-
-
+    print responseJson[u'data'][u'tx']
+    
     execute_from_command_line(sys.argv)
