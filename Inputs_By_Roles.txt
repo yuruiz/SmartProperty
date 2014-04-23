@@ -2,9 +2,10 @@ Creditor
 --------
 1. ownership key (string)
 2. # of months (int)
-3. total cost of ownership (int)
+3. monthly payment (# btc, list-int)
 4. creditor public address (string)
 5. buyer name/id (string/int)
+6. day of month (list-string)
 
 Buyer
 -----
